@@ -1,0 +1,33 @@
+# Python
+.venv/
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+
+# Data: cloned repos, API caches and anything personal stay out of the repo
+data/raw/
+data/private/
+data/cache/
+results/private/
+results/cache/
+
+# Secrets and local config (GitHub tokens go here, never in code)
+.env
+.env.*
+!.env.example
+
+# Drafts of the DEV post are Tanay's to publish
+drafts/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
