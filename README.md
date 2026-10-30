@@ -67,6 +67,9 @@ line ──git log -L──▶ every commit that touched it ──▶ PRs, revie
   raw text; bots, `/lgtm` commands, PR templates and anything after the cutoff are dropped.
 - `backend/ouija/medium.py`: the prompt and the JSON schema; passage ids are an enum.
 - `backend/ouija/verify.py`: the quote checker.
+- `backend/ouija/explain.py`: the answer card (what the line does, why it exists, what to check before
+  changing it), written by Gemma from the checked quotes; a "why" that cites no real quote is not shown.
+  It runs after the evaluated step, so it changes none of the numbers.
 - `backend/ouija/entire.py`: reads `refs/entire/checkpoints/…` with plain git.
 - `backend/ouija/api.py`: live séances in three calls, so **the server holds no GitHub token**: the
   server clones and walks; the visitor's browser fetches PRs and comments from `api.github.com`
