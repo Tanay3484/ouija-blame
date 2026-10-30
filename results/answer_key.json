@@ -1,0 +1,386 @@
+{
+ "rails-51665ffa": {
+  "keep": true,
+  "reason": "The migrations filter lets you prune old migrations cleanly; without it, versions still in teammates' local databases get added back to the schema dump."
+ },
+ "rails-fddf74be": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-6d1252cf": {
+  "keep": true,
+  "reason": "Apps still use the SuckerPunch adapter; removing it outright breaks them, so it has to be deprecated first with a warning pointing to the async adapter."
+ },
+ "rails-b1b2c6d5": {
+  "keep": true,
+  "reason": "The deprecation had not warned every user, so removing the old to_time behaviour would change return values without warning."
+ },
+ "rails-29679df0": {
+  "keep": true,
+  "reason": "The method was deprecated in 7.1, and the deprecation policy says it cannot be removed until 7.2."
+ },
+ "rails-dd7a6737": {
+  "keep": true,
+  "reason": "@virtual_path is needed for lazy translations (t '.foo') in partials rendered with a block; without it lookups resolve to the wrong scope."
+ },
+ "rails-13bd289b": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-0f9249c9": {
+  "keep": true,
+  "reason": "The deprecation did not warn for custom jobs, so applications may never have seen it; DeliveryJob must stay until they can migrate."
+ },
+ "rails-24367edb": {
+  "keep": true,
+  "reason": "People should still be able to use CoffeeScript (another JavaScript engine) in generators."
+ },
+ "rails-65f2eeaa": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-fa791fb8": {
+  "keep": true,
+  "reason": "The server argument was deprecated only in Rails 6.0, so it is still in its deprecation period."
+ },
+ "rails-376ffe0e": {
+  "keep": true,
+  "reason": "When inverse_of is disabled, counters are incremented without an inflated parent target; without this check it runs extra queries to load the parent."
+ },
+ "rails-6f34f7d5": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-57f0e3d1": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-28977f1f": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-f6db31ec": {
+  "keep": true,
+  "reason": "Scope names easily clash across concerns and gems, and running Ruby with -w is not realistic, so the check warns about conflicting scope names."
+ },
+ "rails-5d1b7c3b": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-4ac6cfef": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-9420de59": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-a38732c8": {
+  "keep": true,
+  "reason": "The transaction mutation logic relies on this reader method."
+ },
+ "rails-79469b4b": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-d697ee14": {
+  "keep": true,
+  "reason": "The require is not an implementation dependency: it ensures that requiring array conversions provides to_param and to_query."
+ },
+ "rails-5d2d3010": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-d108672d": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-ae9b3d7c": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-7a8aee08": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-a7f4b0a1": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-3803fcce": {
+  "keep": true,
+  "reason": "These options must be deprecated in 4.0 before they can be removed in 4.1."
+ },
+ "rails-683fc4db": {
+  "keep": true,
+  "reason": "disable_with: is the public API and much easier to type than 'data-disable-with' =>, which is an implementation detail."
+ },
+ "rails-f53c247d": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-45c233ef": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-98c0c5db": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-be797750": {
+  "keep": true,
+  "reason": "form_for with a string or symbol is still valid; only form_for(:foo, @foo) was deprecated."
+ },
+ "rails-a06c47a5": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-e428c75d": {
+  "keep": true,
+  "reason": "The connection method was added so that it can be overridden."
+ },
+ "rails-8e57deed": {
+  "keep": false,
+  "reason": null
+ },
+ "rails-6e2851d4": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-d5ac3f7e": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-007127ea": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-b47d2e07": {
+  "keep": true,
+  "reason": "query/q is a planned feature for Ansible 2.5 that the team decided to keep."
+ },
+ "ansible-07acc579": {
+  "keep": true,
+  "reason": "The outer conditional that handles force does not contain this branch, so force must be handled in both branches."
+ },
+ "ansible-b8125ac1": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-ca8bf6ab": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-6127a858": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-c0d79cf7": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-23a22397": {
+  "keep": true,
+  "reason": "Closing the connection after every task is needed for winrm."
+ },
+ "ansible-de98dc29": {
+  "keep": false,
+  "reason": null
+ },
+ "ansible-a6029264": {
+  "keep": false,
+  "reason": null
+ },
+ "istio-2ffbf677": {
+  "keep": false,
+  "reason": null
+ },
+ "istio-f5640ca8": {
+  "keep": true,
+  "reason": "The sort makes the service list order deterministic; tests (and possibly NDS) depend on that order."
+ },
+ "istio-920d1a36": {
+  "keep": false,
+  "reason": null
+ },
+ "istio-31398b36": {
+  "keep": false,
+  "reason": null
+ },
+ "istio-4a781618": {
+  "keep": false,
+  "reason": null
+ },
+ "kubernetes-f1af8462": {
+  "keep": true,
+  "reason": "Removing the GA feature gate broke compatibility versions: running with --emulated-version=1.31 no longer matched the real v1.31 feature gates."
+ },
+ "kubernetes-128e189f": {
+  "keep": true,
+  "reason": "A deprecated feature gate must first be locked to its default for some releases before it can be removed; removing it early broke emulated versions."
+ },
+ "kubernetes-e71b5c06": {
+  "keep": false,
+  "reason": null
+ },
+ "kubernetes-07c8d356": {
+  "keep": false,
+  "reason": null
+ },
+ "kubernetes-9bbf01ba": {
+  "keep": true,
+  "reason": "Existing PersistentVolumes and StorageClasses that use in-tree Cinder must keep working (through CSI migration); removing this made them unusable."
+ },
+ "kubernetes-25e713ba": {
+  "keep": true,
+  "reason": "Removing the unused kubectl run flags is a breaking change (users setting them get 'unknown flag'); they must go through deprecation."
+ },
+ "kubernetes-916cf16c": {
+  "keep": true,
+  "reason": "The in-tree gcp and azure auth plugins are needed until exec auth works without regressions (one connection per object, port exhaustion)."
+ },
+ "kubernetes-f984b4c7": {
+  "keep": true,
+  "reason": "The allocator's own range handling supports IPv4 service CIDRs larger than 65536 addresses; the shared helper clamped them and broke existing clusters."
+ },
+ "kubernetes-10a12ddb": {
+  "keep": true,
+  "reason": "kubectl must keep the DaemonSet delete hack until servers have the server-side fix (1.11, backported to 1.10.x)."
+ },
+ "kubernetes-3831dd03": {
+  "keep": true,
+  "reason": "GCE clusters using IP aliases need SECONDARY_RANGE_NAME; removing it broke the gci-gce-ip-alias job."
+ },
+ "kubernetes-93be3f77": {
+  "keep": false,
+  "reason": null
+ },
+ "kubernetes-c18626de": {
+  "keep": true,
+  "reason": "Kubemark's hollow kubelet still uses these fields, and they cannot be removed without API review."
+ },
+ "kubernetes-e25a5b15": {
+  "keep": true,
+  "reason": "kubectl reads the old node role label to print node roles; removing it was a regression."
+ },
+ "kubernetes-77624a12": {
+  "keep": false,
+  "reason": null
+ },
+ "kubernetes-587eb199": {
+  "keep": true,
+  "reason": "Alpha dynamic volume provisioning is still used (GKE); removing it broke the dynamic provisioning tests."
+ },
+ "kubernetes-86d94937": {
+  "keep": true,
+  "reason": "GKE still uses the second CA for kubelet auth; removing it broke GKE e2e tests."
+ },
+ "kubernetes-2e19dea9": {
+  "keep": true,
+  "reason": "The conversion package is still needed as a dependency (godep could not find it)."
+ },
+ "kubernetes-1ace8fa9": {
+  "keep": false,
+  "reason": null
+ },
+ "kubernetes-fe8578db": {
+  "keep": true,
+  "reason": "Soak tests rely on the GCE service account path; removing it caused 'invalid grant' errors."
+ },
+ "kubernetes-58f973d8": {
+  "keep": false,
+  "reason": null
+ },
+ "kubernetes-40e5e688": {
+  "keep": true,
+  "reason": "The scheduler's resource-limit predicate (and its e2e test) relies on FailedResourceType."
+ },
+ "kubernetes-dd87c247": {
+  "keep": false,
+  "reason": null
+ },
+ "core-35692b33": {
+  "keep": false,
+  "reason": null
+ },
+ "core-ea10cdb4": {
+  "keep": true,
+  "reason": "The device entry check is needed when adding new Gen2+ sleepy Shelly devices; without it a new device gets only one entity instead of all of them."
+ },
+ "core-a6c1ce86": {
+  "keep": true,
+  "reason": "Users still report the Neato integration as working, so it is kept for now."
+ },
+ "core-1f8913d6": {
+  "keep": false,
+  "reason": null
+ },
+ "core-84d6f5ed": {
+  "keep": true,
+  "reason": "Legacy naming makes entity IDs in Home Assistant match the IDs set in ESPHome, a feature built for ESPHome."
+ },
+ "core-5b25c245": {
+  "keep": true,
+  "reason": "topic_template is documented, working functionality that can be used outside automations; it must be deprecated, not removed."
+ },
+ "core-dfc198ca": {
+  "keep": false,
+  "reason": null
+ },
+ "core-4e4345f0": {
+  "keep": false,
+  "reason": null
+ },
+ "core-f85a8c50": {
+  "keep": false,
+  "reason": null
+ },
+ "core-c890c1ae": {
+  "keep": false,
+  "reason": null
+ },
+ "core-c64d173f": {
+  "keep": false,
+  "reason": null
+ },
+ "core-56bc708b": {
+  "keep": false,
+  "reason": null
+ },
+ "core-5712d12c": {
+  "keep": true,
+  "reason": "The services must be deprecated first rather than removed outright."
+ },
+ "core-f2cf9205": {
+  "keep": false,
+  "reason": null
+ },
+ "core-40cb9337": {
+  "keep": true,
+  "reason": "YAML import has to keep working through the announced 6-month deprecation period (ADR-0021)."
+ },
+ "core-d9ac041e": {
+  "keep": false,
+  "reason": null
+ },
+ "core-ce022613": {
+  "keep": true,
+  "reason": "YAML import has to keep working through the announced 6-month deprecation period (ADR-0021)."
+ },
+ "core-7ae8bd51": {
+  "keep": true,
+  "reason": "Lambda statements avoid a race where the query renders wrongly and states go missing from the logbook; they are the safer path."
+ },
+ "core-39cb2237": {
+  "keep": true,
+  "reason": "HomeAssistantType is kept so that custom components do not break."
+ },
+ "core-19f48e18": {
+  "keep": true,
+  "reason": "Removing the legacy YAML import for Tile broke loading of device_tracker, ios and proximity."
+ },
+ "core-612a37b2": {
+  "keep": false,
+  "reason": null
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "what": "This line defines a function named `turn_on` that handles the initiation of a Tuya vacuum device.",
+ "why": "The code was added as part of a larger effort to improve the Tuya vacuum integration, specifically to allow users to control the device's power state via Home Assistant services [1][2]. It also introduced the 'Locate' function for supported devices [2].",
+ "next": "Before making any changes, verify that this function is still required for the intended power-on functionality within the Tuya vacuum integration.",
+ "cites": [
+  1,
+  2
+ ],
+ "error": null
+}

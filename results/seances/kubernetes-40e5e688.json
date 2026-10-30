@@ -1,0 +1,90 @@
+{
+ "repo": "kubernetes/kubernetes",
+ "path": "plugin/pkg/scheduler/algorithm/predicates/predicates.go",
+ "line": 259,
+ "line_text": "var FailedResourceType string",
+ "ghost": {
+  "name": "dinghaiyang",
+  "login": "HaiyangDING",
+  "first_wrote": "2015-07-24T09:27:29+08:00",
+  "commit": "dab7280ae4656d9a05207571a71c56b020aa35c8",
+  "commit_url": "https://github.com/kubernetes/kubernetes/commit/dab7280ae4656d9a05207571a71c56b020aa35c8",
+  "subject": "Improve clarity around PodFitsResource by showing pods limits in `kubectl describe node`",
+  "last_seen": "2015-11-27T17:07:17+08:00"
+ },
+ "blame": {
+  "commit": "dab7280ae4656d9a05207571a71c56b020aa35c8",
+  "subject": "Improve clarity around PodFitsResource by showing pods limits in `kubectl describe node`",
+  "author": "dinghaiyang",
+  "date": "2015-07-24T09:27:29+08:00",
+  "url": "https://github.com/kubernetes/kubernetes/commit/dab7280ae4656d9a05207571a71c56b020aa35c8"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Improve clarity around PodFitsResource by showing pods limits in `kubectl describe node`",
+   "author": "dinghaiyang",
+   "kind": "commit",
+   "url": "https://github.com/kubernetes/kubernetes/commit/dab7280ae4656d9a05207571a71c56b020aa35c8",
+   "created": "2015-07-24T09:27:29+08:00",
+   "title": "Improve clarity around PodFitsResource by showing pods limits in `kubectl describe node`",
+   "source_id": "commit:dab7280ae465",
+   "is_ghost": true
+  },
+  {
+   "text": "However, #12005 only implements part of what this PR does. This PR does two more things:\n1. in `describe node`: show resource limits of each pod running on the node\n2. in `describe pod`: return explicit failed resource type if PodFitsResources fails",
+   "author": "HaiyangDING",
+   "kind": "pr_comment",
+   "url": "https://github.com/kubernetes/kubernetes/pull/11788#issuecomment-126309285",
+   "created": "2015-07-30T12:40:02Z",
+   "title": "PR #11788",
+   "source_id": "pr_comment:126309285",
+   "is_ghost": true
+  },
+  {
+   "text": "**Why not showing failed resource in this PR**:",
+   "author": "HaiyangDING",
+   "kind": "pr",
+   "url": "https://github.com/kubernetes/kubernetes/pull/11788",
+   "created": "2015-07-24T02:03:22Z",
+   "title": "Improve clarity around PodFitsResource(issue#11453)",
+   "source_id": "pr:11788",
+   "is_ghost": true
+  }
+ ],
+ "medium": "The passages detail the rationale for using FailedResourceType, stemming from a decision to prioritize showing resource limits in node descriptions over explicitly identifying failed resource types to",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 41,
+  "passages": 75,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:dab7280ae465#0",
+  "review_comment:35507358#0",
+  "review_comment:35505839#0",
+  "pr:11788#9",
+  "pr_comment:126309285#1",
+  "pr:11788#8",
+  "pr:11788#10",
+  "pr_comment:124822180#5",
+  "pr_comment:124598053#5",
+  "pr_comment:124598053#2",
+  "pr_comment:124598053#3",
+  "pr:11788#11",
+  "pr:11788#2",
+  "pr:11788#3",
+  "pr_comment:124598053#8",
+  "pr_comment:124822180#1"
+ ],
+ "case": {
+  "id": "kubernetes-40e5e688",
+  "revert": "9b415f03007e6476258dd13b5b7e79796320c100",
+  "deletion": "40e5e688ccf5622ff22115da6a1ea95a55b99be6",
+  "deletion_subject": "Remove FailedResourceType and return custom error",
+  "cutoff": "2016-01-07T13:47:23-08:00"
+ }
+}

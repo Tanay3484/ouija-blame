@@ -1,0 +1,86 @@
+{
+ "repo": "kubernetes/kubernetes",
+ "path": "cmd/kubeadm/app/apis/kubeadm/well_known_labels.go",
+ "line": 2,
+ "line_text": "Copyright 2017 The Kubernetes Authors.",
+ "ghost": {
+  "name": "deads2k",
+  "login": "deads2k",
+  "first_wrote": "2017-05-30T10:46:00-04:00",
+  "commit": "954eb3ceb98032b50362da19a675bc9dacc110e2",
+  "commit_url": "https://github.com/kubernetes/kubernetes/commit/954eb3ceb98032b50362da19a675bc9dacc110e2",
+  "subject": "move labels to components which own the APIs",
+  "last_seen": "2017-06-21T13:02:52-04:00"
+ },
+ "blame": {
+  "commit": "954eb3ceb98032b50362da19a675bc9dacc110e2",
+  "subject": "move labels to components which own the APIs",
+  "author": "deads2k",
+  "date": "2017-05-30T10:46:00-04:00",
+  "url": "https://github.com/kubernetes/kubernetes/commit/954eb3ceb98032b50362da19a675bc9dacc110e2"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "move labels to components which own the APIs",
+   "author": "deads2k",
+   "kind": "commit",
+   "url": "https://github.com/kubernetes/kubernetes/commit/954eb3ceb98032b50362da19a675bc9dacc110e2",
+   "created": "2017-05-30T10:46:00-04:00",
+   "title": "move labels to components which own the APIs",
+   "source_id": "commit:954eb3ceb980",
+   "is_ghost": true
+  },
+  {
+   "text": "During the apimachinery split in 1.6, we accidentally moved several label APIs into apimachinery.  They don't belong there, since the individual APIs are not general machinery concerns, but instead are the concern of particular components: most commonly the kubelet.  This pull moves the labels into their owning components and out of API machinery.",
+   "author": "deads2k",
+   "kind": "pr",
+   "url": "https://github.com/kubernetes/kubernetes/pull/46627",
+   "created": "2017-05-30T14:50:57Z",
+   "title": "move labels to components which own the APIs",
+   "source_id": "pr:46627",
+   "is_ghost": true
+  },
+  {
+   "text": "Lgtm but want a second look from someone.  These do not belong in API machinery for sure.",
+   "author": "smarterclayton",
+   "kind": "pr_comment",
+   "url": "https://github.com/kubernetes/kubernetes/pull/46627#issuecomment-304906245",
+   "created": "2017-05-30T15:00:09Z",
+   "title": "PR #46627",
+   "source_id": "pr_comment:304906245",
+   "is_ghost": false
+  }
+ ],
+ "medium": "These discussions highlight the necessity of moving labels from API machinery to the kubelet due to a misplacement during a 1.6 apimachinery split.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 13,
+  "passages": 12,
+  "shown_to_model": 12,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:954eb3ceb980#0",
+  "pr:46627#1",
+  "pr_comment:305250440#0",
+  "pr_comment:305287234#0",
+  "pr_comment:305469500#0",
+  "pr:46627#0",
+  "review_comment:119352598#0",
+  "pr_comment:304906245#1",
+  "review_comment:119356941#0",
+  "pr_comment:304906245#0",
+  "pr_comment:305196276#0",
+  "review_comment:119352598#1"
+ ],
+ "case": {
+  "id": "kubernetes-e25a5b15",
+  "revert": "81b0fa7b29d14c58075db5c6141ae1475c0d9cd0",
+  "deletion": "e25a5b1546392221c79e4d48dff4643c2341a002",
+  "deletion_subject": "Remove old node role label that is not used by kubeadm",
+  "cutoff": "2017-06-26T14:46:15+03:00"
+ }
+}

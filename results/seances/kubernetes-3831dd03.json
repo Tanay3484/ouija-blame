@@ -1,0 +1,89 @@
+{
+ "repo": "kubernetes/kubernetes",
+ "path": "cluster/gce/config-test.sh",
+ "line": 302,
+ "line_text": "  SECONDARY_RANGE_NAME=${SECONDARY_RANGE_NAME:-}",
+ "ghost": {
+  "name": "Jing Ai",
+  "login": "jingax10",
+  "first_wrote": "2018-01-25T18:25:06-08:00",
+  "commit": "a35dcec8961ea6fcae3a37c275904658c771558a",
+  "commit_url": "https://github.com/kubernetes/kubernetes/commit/a35dcec8961ea6fcae3a37c275904658c771558a",
+  "subject": "Fix GCE IP Aliases CI https://k8s-testgrid.appspot.com/google-gce#gci-gce-ip-alias failure cause by pull #56132.",
+  "last_seen": "2018-01-25T18:25:06-08:00"
+ },
+ "blame": {
+  "commit": "a35dcec8961ea6fcae3a37c275904658c771558a",
+  "subject": "Fix GCE IP Aliases CI https://k8s-testgrid.appspot.com/google-gce#gci-gce-ip-alias failure cause by pull #56132.",
+  "author": "Jing Ai",
+  "date": "2018-01-25T18:25:06-08:00",
+  "url": "https://github.com/kubernetes/kubernetes/commit/a35dcec8961ea6fcae3a37c275904658c771558a"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Fix GCE IP Aliases CI https://k8s-testgrid.appspot.com/google-gce#gci-gce-ip-alias failure cause by pull #56132.",
+   "author": "Jing Ai",
+   "kind": "commit",
+   "url": "https://github.com/kubernetes/kubernetes/commit/a35dcec8961ea6fcae3a37c275904658c771558a",
+   "created": "2018-01-25T18:25:06-08:00",
+   "title": "Fix GCE IP Aliases CI https://k8s-testgrid.appspot.com/google-gce#gci-gce-ip-alias failure cause by pull #56132.",
+   "source_id": "commit:a35dcec8961e",
+   "is_ghost": true
+  },
+  {
+   "text": "The root cause it the changes made in configure-default.sh in PR #56132 should also be made in configure-test.sh, which is used by CI.",
+   "author": "jingax10",
+   "kind": "pr",
+   "url": "https://github.com/kubernetes/kubernetes/pull/58845",
+   "created": "2018-01-26T02:34:37Z",
+   "title": "Fix GCE IP Aliases CI https://k8s-testgrid.appspot.com/google-gce#gci-gce-ip-alias failure cause by PR #56132.",
+   "source_id": "pr:58845",
+   "is_ghost": true
+  },
+  {
+   "text": "**What this PR does / why we need it**:\nThis is a follow-up PR of PR #56132, which breaks [GCE IP Aliases CI](https://k8s-testgrid.appspot.com/google-gce#gci-gce-ip-alias).",
+   "author": "jingax10",
+   "kind": "pr",
+   "url": "https://github.com/kubernetes/kubernetes/pull/58845",
+   "created": "2018-01-26T02:34:37Z",
+   "title": "Fix GCE IP Aliases CI https://k8s-testgrid.appspot.com/google-gce#gci-gce-ip-alias failure cause by PR #56132.",
+   "source_id": "pr:58845",
+   "is_ghost": true
+  }
+ ],
+ "medium": "The code addresses a CI failure linked to a previous change, requiring synchronization across configuration scripts and fixing a broken test grid.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 8,
+  "passages": 15,
+  "shown_to_model": 15,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:a35dcec8961e#0",
+  "pr:58845#3",
+  "issue:58844#4",
+  "pr:58845#0",
+  "pr:58845#1",
+  "issue:58844#2",
+  "issue:58844#0",
+  "issue:58844#1",
+  "issue:58844#7",
+  "pr:58845#2",
+  "pr:58845#4",
+  "issue:58844#3",
+  "issue:58844#5",
+  "issue:58844#6",
+  "issue:58844#8"
+ ],
+ "case": {
+  "id": "kubernetes-3831dd03",
+  "revert": "d8e97cb852f7dcf71af7b4e007760ad6522df257",
+  "deletion": "3831dd0391e3e430efdc0293365a4873fcc8e12e",
+  "deletion_subject": "Remove changes on SECONDARY_RANGE_NAME.",
+  "cutoff": "2018-01-25T20:15:14-08:00"
+ }
+}

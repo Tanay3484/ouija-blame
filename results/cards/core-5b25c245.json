@@ -1,0 +1,11 @@
+{
+ "what": "This line defines a constant named `ATTR_TOPIC_TEMPLATE` which holds the string 'topic_template', used as an attribute name for the `mqtt.publish` service.",
+ "why": "Previously, the MQTT publish service required a fixed topic string, which was inflexible. This change introduced the `topic_template` attribute to allow users to dynamically construct MQTT topics using templates, providing greater flexibility and control over message routing [1][2]. The implementation includes validation to ensure the template renders a valid MQTT topic [3].",
+ "next": "Before modifying or deleting this line, verify that the validation logic for `topic_template` rendering is still functioning correctly and that the tests related to it are passing [3].",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

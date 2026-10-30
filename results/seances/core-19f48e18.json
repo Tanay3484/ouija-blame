@@ -1,0 +1,90 @@
+{
+ "repo": "home-assistant/core",
+ "path": "homeassistant/components/tile/config_flow.py",
+ "line": 19,
+ "line_text": "    def __init__(self):",
+ "ghost": {
+  "name": "Aaron Bach",
+  "login": "bachya",
+  "first_wrote": "2020-06-04T10:07:27-06:00",
+  "commit": "7a3c2e1f6c87da6447bd80d741aac16927bab6a2",
+  "commit_url": "https://github.com/home-assistant/core/commit/7a3c2e1f6c87da6447bd80d741aac16927bab6a2",
+  "subject": "Add config flow for Tile (#36173)",
+  "last_seen": "2020-11-10T18:00:19-07:00"
+ },
+ "blame": {
+  "commit": "7a3c2e1f6c87da6447bd80d741aac16927bab6a2",
+  "subject": "Add config flow for Tile (#36173)",
+  "author": "Aaron Bach",
+  "date": "2020-06-04T10:07:27-06:00",
+  "url": "https://github.com/home-assistant/core/commit/7a3c2e1f6c87da6447bd80d741aac16927bab6a2"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Add config flow for Tile (#36173)",
+   "author": "Aaron Bach",
+   "kind": "commit",
+   "url": "https://github.com/home-assistant/core/commit/7a3c2e1f6c87da6447bd80d741aac16927bab6a2",
+   "created": "2020-06-04T10:07:27-06:00",
+   "title": "Add config flow for Tile (#36173)",
+   "source_id": "commit:7a3c2e1f6c87",
+   "is_ghost": true
+  },
+  {
+   "text": "With this PR, `async_setup` inside `tile/__init__.py` imports the Tile config from`configuration.yaml`:",
+   "author": "bachya",
+   "kind": "review_comment",
+   "url": "https://github.com/home-assistant/core/pull/36173#discussion_r433578331",
+   "created": "2020-06-02T01:51:13Z",
+   "title": "PR #36173 review on homeassistant/components/tile/device_tracker.py",
+   "source_id": "review_comment:433578331",
+   "is_ghost": true
+  },
+  {
+   "text": "I'm not 100% sure it will work with a device tracker, but I was able to do something similar in `harmony` (remote.py) and `nut`(sensor.py) to avoid the need to avoid a breaking change.",
+   "author": "bdraco",
+   "kind": "review_comment",
+   "url": "https://github.com/home-assistant/core/pull/36173#discussion_r432956191",
+   "created": "2020-05-31T15:08:18Z",
+   "title": "PR #36173 review on homeassistant/components/tile/device_tracker.py",
+   "source_id": "review_comment:432956191",
+   "is_ghost": false
+  }
+ ],
+ "medium": "The configuration flow was initially added to integrate Tile, utilizing a modern device tracker API, and avoiding a breaking change by mirroring a similar approach in other components.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 23,
+  "passages": 55,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:7a3c2e1f6c87#0",
+  "commit:7a3c2e1f6c87#1",
+  "commit:7a3c2e1f6c87#2",
+  "commit:7a3c2e1f6c87#3",
+  "commit:7a3c2e1f6c87#4",
+  "commit:7a3c2e1f6c87#5",
+  "review_comment:433578331#1",
+  "review_comment:433578331#2",
+  "pr_comment:638869090#2",
+  "commit:7a3c2e1f6c87#6",
+  "commit:7a3c2e1f6c87#7",
+  "pr_comment:638869090#1",
+  "review_comment:432956191#2",
+  "pr:36173#1",
+  "review_comment:432982567#0",
+  "pr_comment:638869090#0"
+ ],
+ "case": {
+  "id": "core-19f48e18",
+  "revert": "c434afae2eaf55c5123744bde058518c2bed580f",
+  "deletion": "19f48e180c7e6a34bd93d7a849147a8de491771c",
+  "deletion_subject": "Remove YAML config for Tile (#43064)",
+  "cutoff": "2020-11-11T09:44:14+01:00"
+ }
+}

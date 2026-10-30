@@ -1,0 +1,49 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # The job name `tests` is what main's branch protection looks for. Keep it.
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      # Tests use a fake model and a git repo built in the test: no network, no Ollama.
+      - name: Backend install
+        run: pip install -e "backend[dev]"
+
+      - name: Backend lint
+        run: |
+          ruff check backend scripts
+          ruff format --check backend scripts
+
+      - name: Backend tests
+        run: |
+          git config --global user.email ci@example.com
+          git config --global user.name ci
+          pytest backend
+
+      - uses: actions/setup-node@v4
+        if: ${{ hashFiles('app/package.json') != '' }}
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: App install, test, build
+        if: ${{ hashFiles('app/package.json') != '' }}
+        working-directory: app
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build

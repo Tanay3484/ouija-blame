@@ -1,0 +1,11 @@
+{
+ "what": "This line checks if a Shelly device entry exists in the device's configuration entries before attempting to use it.",
+ "why": "The code was initially added to handle the setup of the very first Shelly device added to Home Assistant, preventing an `AttributeError` that occurred when trying to access `config_entries` on a `None` object [1][2]. The comment highlights that this error was specifically triggered during the initial addition of a Shelly device [3].",
+ "next": "Before modifying this line, verify that the logic for handling the initial device setup is still necessary and that no other issues might arise from this check.",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

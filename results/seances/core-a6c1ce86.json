@@ -1,0 +1,90 @@
+{
+ "repo": "home-assistant/core",
+ "path": "homeassistant/components/neato/__init__.py",
+ "line": 1,
+ "line_text": "\"\"\"Support for Neato botvac connected vacuum cleaners.\"\"\"",
+ "ghost": {
+  "name": "John Arild Berentsen",
+  "login": "turbokongen",
+  "first_wrote": "2016-11-19T09:14:40+01:00",
+  "commit": "679d500e61bedad19452e476581fcefa6b84825e",
+  "commit_url": "https://github.com/home-assistant/core/commit/679d500e61bedad19452e476581fcefa6b84825e",
+  "subject": "Neato refactor and support for sensors (#4319)",
+  "last_seen": "2020-04-19T10:00:23+02:00"
+ },
+ "blame": {
+  "commit": "161c368c9d6e7106721c2e0ab99066b902a38d0f",
+  "subject": "Update file header (#21054)",
+  "author": "Fabian Affolter",
+  "date": "2019-02-14T05:35:12+01:00",
+  "url": "https://github.com/home-assistant/core/commit/161c368c9d6e7106721c2e0ab99066b902a38d0f"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Neato refactor and support for sensors (#4319)",
+   "author": "John Arild Berentsen",
+   "kind": "commit",
+   "url": "https://github.com/home-assistant/core/commit/679d500e61bedad19452e476581fcefa6b84825e",
+   "created": "2016-11-19T09:14:40+01:00",
+   "title": "Neato refactor and support for sensors (#4319)",
+   "source_id": "commit:679d500e61be",
+   "is_ghost": true
+  },
+  {
+   "text": "**Description:**\nThis adds support for the following:\n- Battery sensor\n- Status sensor\n- Schedule switch",
+   "author": "turbokongen",
+   "kind": "pr",
+   "url": "https://github.com/home-assistant/core/pull/4319",
+   "created": "2016-11-08T21:10:59Z",
+   "title": "Neato refactor and support for sensors",
+   "source_id": "pr:4319",
+   "is_ghost": true
+  },
+  {
+   "text": "**Example entry for `configuration.yaml` (if applicable):**\n```yaml\nneato:\n  username: your@username.com\n  password: your.password\n```",
+   "author": "turbokongen",
+   "kind": "pr",
+   "url": "https://github.com/home-assistant/core/pull/4319",
+   "created": "2016-11-08T21:10:59Z",
+   "title": "Neato refactor and support for sensors",
+   "source_id": "pr:4319",
+   "is_ghost": true
+  }
+ ],
+ "medium": "The additions of battery and status sensors, alongside configuration examples, were driven by the initial Neato support refactor and subsequent feature expansion.",
+ "stats": {
+  "commits_walked": 2,
+  "sources": 21,
+  "passages": 29,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:161c368c9d6e#0",
+  "commit:161c368c9d6e#1",
+  "commit:161c368c9d6e#2",
+  "commit:679d500e61be#0",
+  "commit:679d500e61be#1",
+  "commit:679d500e61be#2",
+  "pr:4319#0",
+  "pr:4319#3",
+  "pr_comment:259408088#0",
+  "pr_comment:259502399#0",
+  "pr:4319#6",
+  "pr_comment:259507877#0",
+  "pr:4319#5",
+  "review_comment:87537077#0",
+  "pr:21054#0",
+  "pr:4319#1"
+ ],
+ "case": {
+  "id": "core-a6c1ce86",
+  "revert": "7e75ca7af944bd9e1bc3d71f9173905dcb6981c7",
+  "deletion": "a6c1ce86d89ce8ad1ac085265c73f9fd63ff162b",
+  "deletion_subject": "Remove neato integration (#154902)",
+  "cutoff": "2025-10-29T14:05:59+01:00"
+ }
+}

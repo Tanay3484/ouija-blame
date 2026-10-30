@@ -1,0 +1,55 @@
+{
+ "repo": "rails/rails",
+ "path": "activerecord/lib/active_record/migration.rb",
+ "line": 341,
+ "line_text": "      def connection",
+ "ghost": {
+  "name": "Jeremy Kemper",
+  "login": null,
+  "first_wrote": "2009-02-04T12:21:22-08:00",
+  "commit": "6f8ed1cd3fa595a59d7a19d8d383836b456ac803",
+  "commit_url": "https://github.com/rails/rails/commit/6f8ed1cd3fa595a59d7a19d8d383836b456ac803",
+  "subject": "Migrations: make default database connection overridable",
+  "last_seen": "2009-04-22T19:52:28-07:00"
+ },
+ "blame": {
+  "commit": "6f8ed1cd3fa595a59d7a19d8d383836b456ac803",
+  "subject": "Migrations: make default database connection overridable",
+  "author": "Jeremy Kemper",
+  "date": "2009-02-04T12:21:22-08:00",
+  "url": "https://github.com/rails/rails/commit/6f8ed1cd3fa595a59d7a19d8d383836b456ac803"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Migrations: make default database connection overridable",
+   "author": "Jeremy Kemper",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/6f8ed1cd3fa595a59d7a19d8d383836b456ac803",
+   "created": "2009-02-04T12:21:22-08:00",
+   "title": "Migrations: make default database connection overridable",
+   "source_id": "commit:6f8ed1cd3fa5",
+   "is_ghost": true
+  }
+ ],
+ "medium": "The migration’s default database connection was designed to be customizable, as indicated by this commit.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 1,
+  "passages": 1,
+  "shown_to_model": 1,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:6f8ed1cd3fa5#0"
+ ],
+ "case": {
+  "id": "rails-e428c75d",
+  "revert": "4300f945330d885665c84f076182d9650a1a0867",
+  "deletion": "e428c75d2b67c6a7bd5f5e7e1719cdece84d497f",
+  "deletion_subject": "Remove connection method definition, since it's called just once.",
+  "cutoff": "2009-04-23T18:59:35-03:00"
+ }
+}

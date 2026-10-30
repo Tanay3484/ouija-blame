@@ -1,0 +1,90 @@
+{
+ "repo": "rails/rails",
+ "path": "actionmailer/lib/action_mailer.rb",
+ "line": 54,
+ "line_text": "  autoload :DeliveryJob",
+ "ghost": {
+  "name": "Abdelkader Boudih",
+  "login": "dhh",
+  "first_wrote": "2014-08-12T18:24:19+00:00",
+  "commit": "67f8b6b2bc7e7eca8723996b1303c3fafa5ed39b",
+  "commit_url": "https://github.com/rails/rails/commit/67f8b6b2bc7e7eca8723996b1303c3fafa5ed39b",
+  "subject": "Added ActionMailer::DeliverLater",
+  "last_seen": "2016-04-10T13:45:59+01:00"
+ },
+ "blame": {
+  "commit": "299d1f262629aaa25e070db6ae15438e95137054",
+  "subject": "[ActionMailer] Rename ActionMailer::DelayedDeliveryJob to ActionMailer::DeliveryJob",
+  "author": "Abdelkader Boudih",
+  "date": "2014-08-14T23:47:38+00:00",
+  "url": "https://github.com/rails/rails/commit/299d1f262629aaa25e070db6ae15438e95137054"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Refactor DeliverLater into MessageDelivery",
+   "author": "Abdelkader Boudih",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/18303f6e82258c1d6175f1faf1becd260397fb57",
+   "created": "2014-08-13T21:50:38+00:00",
+   "title": "Refactor DeliverLater into MessageDelivery",
+   "source_id": "commit:18303f6e8225",
+   "is_ghost": true
+  },
+  {
+   "text": "We aren't actually _delaying_ deliveries. It's just a delivery job.",
+   "author": "jeremy",
+   "kind": "review_comment",
+   "url": "https://github.com/rails/rails/pull/16485#discussion_r16272326",
+   "created": "2014-08-14T23:01:18Z",
+   "title": "PR #16485 review on actionmailer/lib/action_mailer/delayed_delivery_job.rb",
+   "source_id": "review_comment:16272326",
+   "is_ghost": false
+  },
+  {
+   "text": "I believe we should invert this dependency. Active Job should inject behaviour at Action Mailer when loaded, not Action Mailer that have to depend on Active Job.",
+   "author": "rafaelfranca",
+   "kind": "review_comment",
+   "url": "https://github.com/rails/rails/pull/16485#discussion_r16188123",
+   "created": "2014-08-13T16:46:56Z",
+   "title": "PR #16485 review on actionmailer/lib/action_mailer/base.rb",
+   "source_id": "review_comment:16188123",
+   "is_ghost": false
+  }
+ ],
+ "medium": "The reviews highlight a shift from delayed delivery to a delivery job, a reliance on a workaround for Ruby's mixin method overriding, and a separation of concerns between ActionMailer and Active Job.",
+ "stats": {
+  "commits_walked": 3,
+  "sources": 206,
+  "passages": 277,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:299d1f262629#0",
+  "commit:18303f6e8225#0",
+  "commit:67f8b6b2bc7e#0",
+  "review_comment:16272846#0",
+  "review_comment:16191591#5",
+  "review_comment:16325814#2",
+  "review_comment:16191591#3",
+  "review_comment:16272326#0",
+  "review_comment:16188123#0",
+  "review_comment:16197077#0",
+  "review_comment:16191095#0",
+  "review_comment:16198156#1",
+  "review_comment:16301477#1",
+  "review_comment:16300021#6",
+  "review_comment:16204103#0",
+  "review_comment:16191095#1"
+ ],
+ "case": {
+  "id": "rails-0f9249c9",
+  "revert": "336a07b9a4cac47cecf7dcf089f0bcc4cc6cadd8",
+  "deletion": "0f9249c93f402d276730fcfaba1ed1b876ee7c26",
+  "deletion_subject": "Remove deprecated `ActionMailer::DeliveryJob` and `ActionMailer::Parameterized::DeliveryJob`",
+  "cutoff": "2020-05-05T00:31:14-04:00"
+ }
+}

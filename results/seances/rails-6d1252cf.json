@@ -1,0 +1,86 @@
+{
+ "repo": "rails/rails",
+ "path": "activejob/lib/active_job/queue_adapters.rb",
+ "line": 127,
+ "line_text": "    autoload :SuckerPunchAdapter",
+ "ghost": {
+  "name": "Abdelkader Boudih",
+  "login": "seuros",
+  "first_wrote": "2014-08-26T12:22:59+00:00",
+  "commit": "7e99855dee8db2bf155a502fb3110f47487fcbdd",
+  "commit_url": "https://github.com/rails/rails/commit/7e99855dee8db2bf155a502fb3110f47487fcbdd",
+  "subject": "[ActiveJob] Autoload adapters",
+  "last_seen": "2016-04-10T13:45:59+01:00"
+ },
+ "blame": {
+  "commit": "7e99855dee8db2bf155a502fb3110f47487fcbdd",
+  "subject": "[ActiveJob] Autoload adapters",
+  "author": "Abdelkader Boudih",
+  "date": "2014-08-26T12:22:59+00:00",
+  "url": "https://github.com/rails/rails/commit/7e99855dee8db2bf155a502fb3110f47487fcbdd"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "[ActiveJob] Autoload adapters",
+   "author": "Abdelkader Boudih",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/7e99855dee8db2bf155a502fb3110f47487fcbdd",
+   "created": "2014-08-26T12:22:59+00:00",
+   "title": "[ActiveJob] Autoload adapters",
+   "source_id": "commit:7e99855dee8d",
+   "is_ghost": true
+  },
+  {
+   "text": "That will fix a bug when a backend don't require the adapter first",
+   "author": "seuros",
+   "kind": "pr",
+   "url": "https://github.com/rails/rails/pull/16700",
+   "created": "2014-08-26T12:46:23Z",
+   "title": "[ActiveJob] Autoload adapters",
+   "source_id": "pr:16700",
+   "is_ghost": true
+  },
+  {
+   "text": "That will also autoload the TestAdapter when required instead of always requiring it. (WIP)",
+   "author": "seuros",
+   "kind": "pr",
+   "url": "https://github.com/rails/rails/pull/16700",
+   "created": "2014-08-26T12:46:23Z",
+   "title": "[ActiveJob] Autoload adapters",
+   "source_id": "pr:16700",
+   "is_ghost": true
+  }
+ ],
+ "medium": "The discussions highlight that autoloading was implemented to resolve a Sidekiq bug, avoid requiring the adapter, and enable lazy loading.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 5,
+  "passages": 12,
+  "shown_to_model": 12,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:7e99855dee8d#0",
+  "pr:16700#0",
+  "pr:16700#2",
+  "pr_comment:53430179#1",
+  "review_comment:16714632#0",
+  "pr_comment:53430179#0",
+  "pr_comment:53444596#2",
+  "pr:16700#1",
+  "pr_comment:53444596#0",
+  "pr:16700#3",
+  "pr_comment:53444596#1",
+  "pr_comment:53444596#3"
+ ],
+ "case": {
+  "id": "rails-6d1252cf",
+  "revert": "b97acae02dd1a716825d7466b6b722e049274f95",
+  "deletion": "6d1252cf3e65a7720aad5511ff719b44e49fd2a3",
+  "deletion_subject": "Remove sucker_punch ActiveJob::Queue adapter (#52935)",
+  "cutoff": "2024-09-14T17:12:32-07:00"
+ }
+}

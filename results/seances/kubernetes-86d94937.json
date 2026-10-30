@@ -1,0 +1,78 @@
+{
+ "repo": "kubernetes/kubernetes",
+ "path": "cluster/common.sh",
+ "line": 588,
+ "line_text": "KUBELET_AUTH_CA_CERT: $(yaml-quote ${KUBELET_AUTH_CA_CERT_BASE64:-})",
+ "ghost": {
+  "name": "Mike Danese",
+  "login": "mikedanese",
+  "first_wrote": "2016-12-06T16:08:39-08:00",
+  "commit": "3ab0e37cc6dc5fb18030a3329c6ede08e87d7201",
+  "commit_url": "https://github.com/kubernetes/kubernetes/commit/3ab0e37cc6dc5fb18030a3329c6ede08e87d7201",
+  "subject": "implement upgrades",
+  "last_seen": "2017-02-03T11:51:26-08:00"
+ },
+ "blame": {
+  "commit": "3ab0e37cc6dc5fb18030a3329c6ede08e87d7201",
+  "subject": "implement upgrades",
+  "author": "Mike Danese",
+  "date": "2016-12-06T16:08:39-08:00",
+  "url": "https://github.com/kubernetes/kubernetes/commit/3ab0e37cc6dc5fb18030a3329c6ede08e87d7201"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "implement upgrades",
+   "author": "Mike Danese",
+   "kind": "commit",
+   "url": "https://github.com/kubernetes/kubernetes/commit/3ab0e37cc6dc5fb18030a3329c6ede08e87d7201",
+   "created": "2016-12-06T16:08:39-08:00",
+   "title": "implement upgrades",
+   "source_id": "commit:3ab0e37cc6dc",
+   "is_ghost": true
+  },
+  {
+   "text": "This change is [<img src=\"https://reviewable.kubernetes.io/review_button.png\" height=\"34\" align=\"absmiddle\" alt=\"Reviewable\"/>](https://reviewable.kubernetes.io/reviews/kubernetes/kubernetes/38212)",
+   "author": "k8s-reviewable",
+   "kind": "pr_comment",
+   "url": "https://github.com/kubernetes/kubernetes/pull/38212#issuecomment-265268247",
+   "created": "2016-12-06T20:51:00Z",
+   "title": "PR #38212",
+   "source_id": "pr_comment:265268247",
+   "is_ghost": false
+  },
+  {
+   "text": "@roberthbailey @zmerlynn rebased and fixed.",
+   "author": "mikedanese",
+   "kind": "pr_comment",
+   "url": "https://github.com/kubernetes/kubernetes/pull/38212#issuecomment-270518696",
+   "created": "2017-01-04T23:33:26Z",
+   "title": "PR #38212",
+   "source_id": "pr_comment:270518696",
+   "is_ghost": true
+  }
+ ],
+ "medium": "These passages reveal the line’s role in upgrades, a review process, and subsequent fixes.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 6,
+  "passages": 4,
+  "shown_to_model": 4,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:3ab0e37cc6dc#0",
+  "pr_comment:265268247#0",
+  "pr_comment:270518696#0",
+  "pr_comment:271462241#0"
+ ],
+ "case": {
+  "id": "kubernetes-86d94937",
+  "revert": "1841e5b2e0de0b5e3ff8b7e1fe46e93a47bacde9",
+  "deletion": "86d9493747a88c6ce6f705b239604173af61ce17",
+  "deletion_subject": "remove second CA used for kubelet auth in favor of webhook auth",
+  "cutoff": "2017-02-07T13:22:01-08:00"
+ }
+}

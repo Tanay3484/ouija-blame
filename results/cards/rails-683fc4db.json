@@ -1,0 +1,10 @@
+{
+ "what": "This line checks if the `disable_with` option is present in the options hash passed to the `FormTagHelper`.",
+ "why": "The original intention was to allow developers to specify custom text for a disabled submit button, providing flexibility in form design [1]. Later, the default input tag name was changed to 'commit' to avoid conflicts with JavaScript [2]. This `if` statement ensures that if the `disable_with` option is provided, it's extracted from the options, maintaining this functionality [1].",
+ "next": "Verify that the `disable_with` option is still intended to be used and that its removal wouldn't introduce unexpected behavior in form submissions [1][2].",
+ "cites": [
+  1,
+  2
+ ],
+ "error": null
+}

@@ -93,9 +93,23 @@ results pending at the time of writing.
   post-writer, `.gitignore`). No GitHub repo yet: ask Tanay for the repo name, create it, make it public
   only when Tanay says so (Tanay may need to do it himself; the classifier blocked the agent in Week 3),
   then apply branch protection like Week 3 (PR, 1 approval, `tests` check, no force pushes).
-- **Next:** write `specs/000-brief/brief.md` (problem, real person, the evidence plan above, the
-  partner-category decisions, scope for 3½ days), stop, and ask Tanay to review. Then requirements, design,
-  tasks, each approved by Tanay. Offer the Week 2 unlock game again for the `@human` levels.
+- 2026-10-27: brief drafted. Name **Ouija Blame**. Private repo <https://github.com/Tanay3484/ouija-blame>
+  created and `main` pushed (branch protection once public). Tanay's answers: no token of his on Render
+  (server clones over plain git; visitors' browsers call the GitHub API, optional own token kept in the
+  tab); Entire is in (séance reads public `refs/entire/checkpoints/…`; Tanay installs the CLI to record
+  sessions; read transcripts for work content before anything goes public); no unlock game (no time).
+- 2026-10-30/31 (overnight, Tanay busy with work all week): built through with Tanay's agreement, specs
+  in one file (`specs/001-ouija-blame-mvp/spec.md`). Live at <https://ouija-blame.onrender.com> from the
+  `build` branch: web `srv-dbie6h5g1s2s73ejeje0` (starter), `ouija-ollama` `srv-dbie6de7bikc73am2nkg`
+  (2c-4g, Gemma 3 4B). After Tanay merges the PR, switch both services to `main`. Evaluation: 45 reverted
+  deletions (Rails, Kubernetes, Home Assistant, Ansible, Istio), blind-graded by Claude; séance 28/45 any
+  written reason vs blame 19/45, blame+PR 29/45; revert's reason 8/45 for séance, 5–7 for baselines;
+  main failure: Gemma rarely stays silent (1 of 13 unanswerable). Numbers in `results/summary.md`. Post
+  draft `drafts/devto-submission.md` with TODO(Tanay) markers; spot check in `drafts/spot_check.md`
+  (`python -I scripts/spot_check.py score`). GitHub calls in scripts go through `gh api` (the classifier
+  blocks reading the token). Render health paths need `MSYS_NO_PATHCONV=1` in Git Bash (bit again).
+- **Next (Tanay, morning of 2026-10-31):** rewrite the opening, spot-check 10 cases, try one live séance
+  and write the Spirit section, merge the PR, make the repo public, publish before 12:29 IST.
 - Good `@human` candidates (pure functions, 1–3 h each): the revert miner (find reverts and pair them with
   the deleted lines), the blame-to-PR linker (line → commit → PR → review threads), the citation checker
   (does every quoted span exist verbatim in the cited source?), the evaluation statistics (hit rates and a

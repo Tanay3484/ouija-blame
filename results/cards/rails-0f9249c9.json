@@ -1,0 +1,11 @@
+{
+ "what": "This line enables automatic loading of the `DeliveryJob` class when `action_mailer` is required, simplifying the process of scheduling email deliveries.",
+ "why": "The original design intended to use `DeliveryJob` to handle email delivery, but the team realized it was more appropriate for `action_mailer` to depend on Active Job when loaded, rather than the other way around [1][3]. Jeremy clarified that the `DeliveryJob` wasn't actually delaying deliveries, but rather a job that was executed [2].",
+ "next": "Before making any changes, verify that the current dependency direction – `action_mailer` autoloading `DeliveryJob` – still aligns with the understanding that Active Job should provide the delivery behavior [1][3].",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}
