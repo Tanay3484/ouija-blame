@@ -28,6 +28,8 @@ export interface Seance {
   silence: string | null;
   quotes: Quote[];
   medium: string;
+  /** Gemma's plain-words answer, written from the checked quotes; null on old séances. */
+  card?: { what: string; why: string; next: string; cites: number[]; error: string | null } | null;
   stats: {
     commits_walked: number;
     sources: number;

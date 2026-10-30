@@ -37,9 +37,17 @@ def excerpt(text: str, reason: str) -> str:
 def main() -> None:
     key = json.loads((ROOT / "results" / "answer_key.json").read_text(encoding="utf-8"))
     cases = {
-        c["id"]: c for c in map(json.loads, (ROOT / "results" / "cases.jsonl").read_text(encoding="utf-8").splitlines())
+        c["id"]: c
+        for c in map(
+            json.loads, (ROOT / "results" / "cases.jsonl").read_text(encoding="utf-8").splitlines()
+        )
     }
-    blind = [json.loads(ln) for ln in (ROOT / "results" / "grading" / "blind.jsonl").read_text(encoding="utf-8").splitlines()]
+    blind = [
+        json.loads(ln)
+        for ln in (ROOT / "results" / "grading" / "blind.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
+    ]
     out = sys.stdout
     cur = None
     for item in blind:

@@ -14,6 +14,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def card_for(sid: str) -> dict | None:
+    f = ROOT / "results" / "cards" / f"{sid}.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else None
+
+
 def main() -> None:
     cases = {
         c["id"]: c
@@ -35,6 +40,7 @@ def main() -> None:
             continue
         c = cases[cid]
         s["revert_subject"] = c["revert_subject"]
+        s["card"] = card_for(cid)
         s["answer"] = key[cid]["reason"]
         s.pop("shown_ids", None)
         (out_dir / f"{cid}.json").write_text(json.dumps(s, ensure_ascii=False), encoding="utf-8")
@@ -57,6 +63,7 @@ def main() -> None:
     for f in sorted((ROOT / "results" / "extra_seances").glob("*.json")):
         s = json.loads(f.read_text(encoding="utf-8"))
         sid = s["extra_id"]
+        s["card"] = card_for(sid)
         (out_dir / f"{sid}.json").write_text(json.dumps(s, ensure_ascii=False), encoding="utf-8")
         g = s["ghost"]
         extras.append(

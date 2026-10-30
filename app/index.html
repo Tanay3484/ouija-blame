@@ -11,76 +11,95 @@
     <title>Ouija Blame: a séance for the engineer who left</title>
   </head>
   <body>
-    <header class="top">
-      <p class="kicker">DEV Hacktoberfest 2026 · Week 4 · Ghost in the Machine</p>
-      <h1 class="logo">Ouija<span>Blame</span></h1>
-      <p class="lede">
-        Every codebase has a line nobody dares delete. The person who knew why it is there has left.
-        Ask the line, and the ghost of whoever wrote it answers, <strong>only in words they actually wrote</strong>,
-        each one linked to the commit, pull request or review where they wrote it. If they never wrote the reason
-        down, the ghost says so.
-      </p>
+    <header class="bar">
+      <a class="brand" href="./" aria-label="Ouija Blame, home">Ouija<span>Blame</span></a>
+      <p class="bar-tag">a séance for the engineer who left</p>
+      <nav aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="https://github.com/Tanay3484/ouija-blame" target="_blank" rel="noopener">Code</a>
+      </nav>
     </header>
 
-    <main>
-      <section id="altar" class="altar" aria-label="The séance">
-        <canvas id="scene" class="pixel" aria-hidden="true"></canvas>
+    <main class="stage">
+      <section id="altar" class="altar" aria-label="The séance table">
+        <canvas id="scene" class="pixel scene" aria-hidden="true"></canvas>
         <ol id="log" class="log" aria-live="polite"></ol>
-        <canvas id="ouija" class="pixel ouija" aria-hidden="true"></canvas>
+        <canvas id="ouija" class="pixel ouija" role="application"
+          aria-label="Ouija board. Drag the planchette. Rest it on YES to summon, NO to clear, GOODBYE to close. Rest it on letters to spell a project name."></canvas>
+        <div class="board-help">
+          <p id="spelled" class="spelled" aria-live="polite"></p>
+          <p class="hint">Drag the planchette. <b>YES</b> summons · <b>NO</b> clears · <b>GOODBYE</b> closes · spell <b>RAILS</b> or <b>KUBE</b> to find a project's ghosts</p>
+        </div>
       </section>
 
-      <section id="answer" class="answer" aria-live="polite" hidden></section>
+      <section class="panel">
+        <div id="home">
+          <p class="kicker">DEV Hacktoberfest 2026 · Week 4 · Ghost in the Machine</p>
+          <h1 class="headline">Why is this line here?</h1>
+          <p class="lede">
+            Every codebase has a line nobody dares delete, and the person who knew why it is there has left.
+            Ask the line. The ghost of whoever wrote it answers <strong>only in words they actually wrote</strong>,
+            each linked to the commit, pull request or review where they wrote it. Gemma then explains it in plain
+            words, citing those quotes. If nobody wrote the reason down, the ghost says so.
+          </p>
 
-      <section class="gallery" aria-labelledby="gallery-title">
-        <h2 id="gallery-title">Haunted lines</h2>
-        <p class="note">
-          Each of these lines was deleted by someone who thought it was pointless. It broke, and it was put back.
-          Each séance only heard what was written <em>before</em> the deletion, so you can check what the ghost
-          said against why the line really had to come back.
-        </p>
-        <div id="gallery-grid" class="grid"></div>
-      </section>
+          <form id="ask" class="ask">
+            <label for="line-url">Paste a GitHub link to one line of a public repo</label>
+            <div class="ask-row">
+              <input id="line-url" type="url" inputmode="url" autocomplete="off"
+                placeholder="https://github.com/owner/repo/blob/main/path/file.go#L42" />
+              <button type="submit">Summon</button>
+            </div>
+            <p id="ask-error" class="error" role="alert"></p>
+            <details>
+              <summary>Your own GitHub token (optional) and limits</summary>
+              <p class="note">
+                Live séances take public repos up to 150 MB, and the medium runs on a small CPU, so allow a minute.
+                GitHub lets each browser make 60 calls an hour, about two séances. A token raises that: it stays in
+                this tab, is sent only to api.github.com, and never reaches our server.
+              </p>
+              <input id="token" type="password" autocomplete="off" placeholder="github_pat_…" />
+            </details>
+          </form>
 
-      <section class="ask-wrap" aria-labelledby="ask-title">
-        <h2 id="ask-title">Hold your own séance</h2>
-        <form id="ask" class="ask">
-          <label for="line-url">A GitHub link to one line of a public repo</label>
-          <input id="line-url" type="url" inputmode="url" autocomplete="off" required
-            placeholder="https://github.com/owner/repo/blob/main/path/file.go#L42" />
-          <details>
-            <summary>Your own GitHub token (optional)</summary>
-            <p class="note">
-              GitHub lets each browser make 60 calls an hour, about two séances. A token raises that. It stays in this
-              tab, is sent only to api.github.com, and never reaches our server. A fine-grained token with no
-              permissions is enough for public repos.
-            </p>
-            <input id="token" type="password" autocomplete="off" placeholder="github_pat_…" />
-          </details>
-          <button type="submit">Summon</button>
-          <p id="ask-error" class="error" role="alert"></p>
-          <p class="note">Live séances take repos up to 150 MB. The medium runs on a small CPU and can take a minute.</p>
-        </form>
-      </section>
+          <div class="gallery-head">
+            <h2 id="gallery-title">Haunted lines</h2>
+            <p id="gallery-filter" class="filter" hidden></p>
+          </div>
+          <p class="note">
+            Each of these lines was deleted by someone who thought it was pointless. It broke, and it was put back.
+            Each séance heard only what was written <em>before</em> the deletion, so you can check the ghost against
+            why the line really had to come back.
+          </p>
+          <div id="gallery-grid" class="grid" aria-labelledby="gallery-title"></div>
+        </div>
 
-      <section class="how" aria-labelledby="how-title">
-        <h2 id="how-title">How the séance works</h2>
-        <ol>
-          <li><strong>Walk the line back.</strong> <code>git blame</code> shows the last commit that touched a line, which is often a reformat. <code>git log -L</code> follows the line back through every change to the commit that first wrote it.</li>
-          <li><strong>Gather what was written.</strong> Commit messages, the pull requests behind them, review comments, linked issues, and agent-session prompts when a commit has an Entire checkpoint.</li>
-          <li><strong>The medium points.</strong> Gemma, an open-weight model, reads the closest passages and picks up to three that say why the line exists. It can only pick passage numbers. It cannot write a word of the quote.</li>
-          <li><strong>Code checks every word.</strong> Each quote must appear word for word in its source, or it is thrown out. If nothing is left, the ghost says “I never wrote down why.”</li>
-        </ol>
-        <h3>Ground rules</h3>
-        <ul>
-          <li>Only public words, always with a link to where they were written.</li>
-          <li>The medium's own words are shown apart and labelled as the model's.</li>
-          <li>The people here left projects. They moved on; nobody here died. The ghost is a generic sprite, never a photo.</li>
-        </ul>
+        <div id="answer" class="answer" aria-live="polite" hidden></div>
       </section>
     </main>
 
+    <section id="how" class="how" aria-labelledby="how-title">
+      <h2 id="how-title">How the séance works</h2>
+      <ol class="steps">
+        <li><strong>Walk the line back.</strong> <code>git blame</code> shows the last commit that touched a line, often a reformat. <code>git log -L</code> follows the line back through every change to the commit that first wrote it.</li>
+        <li><strong>Gather what was written.</strong> Commit messages, the pull requests behind them, review comments, linked issues, and the prompts behind agent-written code when a commit has an Entire checkpoint.</li>
+        <li><strong>The medium points.</strong> Gemma, an open-weight model, reads the closest passages and picks up to three that say why the line exists. It can only pick passage numbers, never write a quote.</li>
+        <li><strong>Code checks every word.</strong> Each quote must appear word for word in its source. Gemma's plain-words explanation must cite the quotes; a "why" that cites nothing is not shown.</li>
+      </ol>
+      <div class="rules">
+        <h3>Ground rules</h3>
+        <ul>
+          <li>Only public words, always with a link to where they were written.</li>
+          <li>The model's own words are shown apart and labelled as the model's.</li>
+          <li>The people here left projects or moved on. Nobody here died. The ghost is a generic sprite, never a photo.</li>
+        </ul>
+        <h3>The evidence</h3>
+        <p>On 45 real lines that were deleted, broke, and were put back, the séance surfaced a written reason for 28; the <code>git blame</code> message did for 19. Method and limits: <a href="https://github.com/Tanay3484/ouija-blame/blob/main/results/summary.md">results/summary.md</a>.</p>
+      </div>
+    </section>
+
     <footer class="foot">
-      <p>Open source (MIT): <a href="https://github.com/Tanay3484/ouija-blame">github.com/Tanay3484/ouija-blame</a>. Built by Tanay with Claude Code. Gemma runs on our own server: no closed AI APIs.</p>
+      <p>Open source (MIT): <a href="https://github.com/Tanay3484/ouija-blame">github.com/Tanay3484/ouija-blame</a>. Gemma runs on our own server: no closed AI APIs.</p>
     </footer>
     <script type="module" src="/src/main.ts"></script>
   </body>

@@ -16,7 +16,13 @@ class LLMError(Exception):
 
 
 class ChatJSON(Protocol):
-    def chat_json(self, messages: list[dict], schema: dict, temperature: float = 0.6) -> dict: ...
+    def chat_json(
+        self,
+        messages: list[dict],
+        schema: dict,
+        temperature: float = 0.6,
+        num_predict: int | None = None,
+    ) -> dict: ...
 
 
 class OllamaClient:
@@ -37,9 +43,15 @@ class OllamaClient:
         self.num_ctx = num_ctx
         self._http = http or httpx.Client(timeout=timeout_s)
 
-    def chat_json(self, messages: list[dict], schema: dict, temperature: float = 0.6) -> dict:
+    def chat_json(
+        self,
+        messages: list[dict],
+        schema: dict,
+        temperature: float = 0.6,
+        num_predict: int | None = None,
+    ) -> dict:
         # num_predict caps runaway output: small models under a schema can loop.
-        options: dict = {"temperature": temperature, "num_predict": self.num_predict}
+        options: dict = {"temperature": temperature, "num_predict": num_predict or self.num_predict}
         if self.num_thread:
             options["num_thread"] = self.num_thread
         if self.num_ctx:

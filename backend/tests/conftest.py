@@ -79,15 +79,23 @@ def haunted_repo(tmp_path: Path) -> tuple[str, dict]:
 
 
 class FakeLLM:
-    def __init__(self, reply: dict | Exception):
+    """Answers the medium with `reply` and the answer card with `card` (told apart by the schema)."""
+
+    def __init__(self, reply: dict | Exception, card: dict | Exception | None = None):
         self.reply = reply
+        self.card = card or {
+            "what": "Retries once.",
+            "why": "A proxy drops packets [1].",
+            "next": "Check the proxy.",
+        }
         self.calls: list[dict] = []
 
-    def chat_json(self, messages, schema, temperature=0.6):
+    def chat_json(self, messages, schema, temperature=0.6, num_predict=None):
         self.calls.append({"messages": messages, "schema": schema})
-        if isinstance(self.reply, Exception):
-            raise self.reply
-        return self.reply
+        out = self.card if "why" in schema["properties"] else self.reply
+        if isinstance(out, Exception):
+            raise out
+        return out
 
 
 @pytest.fixture

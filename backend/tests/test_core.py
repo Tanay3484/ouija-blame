@@ -309,3 +309,64 @@ def test_entire_prompts_become_sources(tmp_path):
     assert src.kind == "checkpoint" and src.author == "Ada"
     assert "because authors test content" in src.raw
     assert "Claude Code" in src.title
+
+
+# ---- the answer card -----------------------------------------------------------------------------
+
+
+def _q(text="The proxy drops the first packet."):
+    return {"text": text, "kind": "commit", "author": "Ada", "created": "2019-03-01T00:00:00Z"}
+
+
+def test_card_keeps_real_citations_and_strips_invented_ones(fake_llm):
+    from ouija.explain import explain
+
+    card = {
+        "what": "Retries the socket once.",
+        "why": "The proxy drops packets [1], see also [7].",
+        "next": "Ask ops.",
+    }
+    out = explain(fake_llm({}, card), "app.py", "s.retry(1)", [_q()], silent=False)
+    assert out["cites"] == [1]
+    assert "[7]" not in out["why"] and "[1]" in out["why"]
+    assert out["what"] == "Retries the socket once."
+
+
+def test_card_without_any_citation_does_not_claim_a_reason(fake_llm):
+    from ouija.explain import UNCITED, explain
+
+    card = {"what": "x", "why": "It is clearly for performance.", "next": "y"}
+    assert explain(fake_llm({}, card), "a.py", "x", [_q()], silent=False)["why"] == UNCITED
+
+
+def test_card_for_a_silent_seance_says_nobody_wrote_it_down(fake_llm):
+    from ouija.explain import NOT_WRITTEN, explain
+
+    card = {"what": "Retries.", "why": "Because of a proxy [1].", "next": "Check tests."}
+    out = explain(fake_llm({}, card), "a.py", "x", [], silent=True)
+    assert out["why"] == NOT_WRITTEN and out["cites"] == [] and out["what"] == "Retries."
+
+
+def test_card_survives_a_dead_model(fake_llm):
+    from ouija.explain import explain
+
+    out = explain(fake_llm({}, LLMError("down")), "a.py", "x", [_q()], silent=False)
+    assert out["error"] == "down" and out["why"] == ""
+
+
+def test_seance_carries_the_card(haunted_repo, fake_llm):
+    out = _run(haunted_repo, fake_llm({"found": True, "passages": ["P3"], "medium": "m"}))
+    assert out["card"]["cites"] == [1] and out["card"]["what"] == "Retries once."
+
+
+def test_card_reads_grouped_citations_and_drops_a_contradiction(fake_llm):
+    from ouija.explain import explain
+
+    card = {
+        "what": "x",
+        "why": "“It exists for the proxy [1, 2].” The history does not say why.",
+        "next": "y",
+    }
+    out = explain(fake_llm({}, card), "a.py", "x", [_q(), _q("b")], silent=False)
+    assert out["cites"] == [1, 2]
+    assert out["why"] == "It exists for the proxy [1][2]."

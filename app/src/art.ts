@@ -1,9 +1,9 @@
-// The séance table and the Ouija board, drawn in code at low resolution and scaled up crisp.
+// The séance table, drawn in code at low resolution and scaled up crisp.
 // Everything here is original pixel art: no sprites from anywhere else.
 
 type Phase = "idle" | "summoning" | "speaking" | "silent";
 
-const P = {
+export const P = {
   night: "#0d0a1a",
   night2: "#160f2b",
   night3: "#21173d",
@@ -52,12 +52,12 @@ const GHOST_SILENT = GHOST.map((row, y) =>
   y === 4 ? ".ebbbbbbbbbbbe." : y === 5 ? "ebbcccbbbcccbbe" : y === 7 ? "ebbbbcccccbbbbe" : y === 8 ? "ebbbbbbbbbbbbbe" : row,
 );
 
-function px(g: CanvasRenderingContext2D, x: number, y: number, c: string, w = 1, h = 1) {
+export function px(g: CanvasRenderingContext2D, x: number, y: number, c: string, w = 1, h = 1) {
   g.fillStyle = c;
   g.fillRect(Math.round(x), Math.round(y), w, h);
 }
 
-function glow(g: CanvasRenderingContext2D, cx: number, cy: number, r: number, c: string, strength: number) {
+export function glow(g: CanvasRenderingContext2D, cx: number, cy: number, r: number, c: string, strength: number) {
   for (let y = -r; y <= r; y++)
     for (let x = -r; x <= r; x++) {
       const d = Math.hypot(x, y) / r;
@@ -190,112 +190,5 @@ export class Scene {
       });
       g.globalAlpha = 1;
     }
-  }
-}
-
-// ---- The Ouija board: the planchette spells what the ghost says, letter by letter ----------------
-
-const ROW1 = "ABCDEFGHIJKLM";
-const ROW2 = "NOPQRSTUVWXYZ";
-
-export class Ouija {
-  readonly W = 192;
-  readonly H = 60;
-  private g: CanvasRenderingContext2D;
-  private spots = new Map<string, [number, number]>();
-  private queue: string[] = [];
-  private pos: [number, number] = [96, 44];
-  private target: [number, number] = [96, 44];
-  private dwell = 0;
-  private lit: string | null = null;
-  private last = performance.now();
-
-  constructor(canvas: HTMLCanvasElement) {
-    canvas.width = this.W;
-    canvas.height = this.H;
-    this.g = canvas.getContext("2d")!;
-    [...ROW1].forEach((ch, i) => this.spots.set(ch, [18 + i * 12.8, 25]));
-    [...ROW2].forEach((ch, i) => this.spots.set(ch, [18 + i * 12.8, 38]));
-    this.spots.set("YES", [22, 10]);
-    this.spots.set("NO", [170, 10]);
-    this.spots.set("GOODBYE", [96, 52]);
-    const loop = (now: number) => {
-      this.step(Math.min(0.05, (now - this.last) / 1000));
-      this.last = now;
-      this.draw();
-      requestAnimationFrame(loop);
-    };
-    document.fonts?.ready.then(() => this.draw());
-    requestAnimationFrame(loop);
-  }
-
-  /** Spell a word (letters only), then rest on a final spot such as GOODBYE. */
-  spell(word: string, end?: "YES" | "NO" | "GOODBYE") {
-    this.queue = [...word.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 12)];
-    if (end) this.queue.push(end);
-    if (end !== "GOODBYE") this.queue.push("GOODBYE");
-  }
-
-  say(spot: "YES" | "NO" | "GOODBYE") {
-    this.queue = spot === "GOODBYE" ? [spot] : [spot, "GOODBYE"];
-  }
-
-  wander() {
-    this.queue = [];
-    this.target = [96 + Math.sin(performance.now() / 700) * 40, 32];
-  }
-
-  private step(dt: number) {
-    const [x, y] = this.pos;
-    const [tx, ty] = this.target;
-    const k = Math.min(1, dt * 6);
-    this.pos = [x + (tx - x) * k, y + (ty - y) * k];
-    const near = Math.hypot(tx - x, ty - y) < 1.5;
-    if (near) this.dwell += dt;
-    if (near && this.dwell > 0.45 && this.queue.length) {
-      const next = this.queue.shift()!;
-      const spot = this.spots.get(next);
-      if (spot) this.target = [spot[0], spot[1] + 3];
-      this.lit = next;
-      this.dwell = 0;
-    }
-  }
-
-  private draw() {
-    const g = this.g;
-    const { W, H } = this;
-    g.imageSmoothingEnabled = false;
-    px(g, 0, 0, P.night, W, H);
-    px(g, 2, 2, P.woodEdge, W - 4, H - 4);
-    px(g, 3, 3, P.wood, W - 6, H - 6);
-    for (let y = 4; y < H - 4; y += 5) px(g, 4, y, P.woodHi, W - 8, 1);
-    g.font = '8px "Press Start 2P", monospace';
-    g.textAlign = "center";
-    g.textBaseline = "middle";
-    for (const [k, [x, y]] of this.spots) {
-      g.fillStyle = k === this.lit ? "#ffffff" : k.length > 1 ? P.letterDim : P.letter;
-      g.font = k.length > 1 ? '6px "Press Start 2P", monospace' : '8px "Press Start 2P", monospace';
-      g.fillText(k, x, y);
-    }
-    // Planchette: a teardrop with a window over the letter.
-    const [x, y] = this.pos;
-    g.fillStyle = "rgba(240, 220, 190, 0.85)";
-    g.beginPath();
-    g.moveTo(x, y - 12);
-    g.quadraticCurveTo(x + 11, y - 4, x + 7, y + 8);
-    g.lineTo(x - 7, y + 8);
-    g.quadraticCurveTo(x - 11, y - 4, x, y - 12);
-    g.fill();
-    g.fillStyle = "rgba(13, 10, 26, 0.0)";
-    g.globalCompositeOperation = "destination-out";
-    g.beginPath();
-    g.arc(x, y - 3, 3.5, 0, Math.PI * 2);
-    g.fill();
-    g.globalCompositeOperation = "source-over";
-    g.strokeStyle = P.brass;
-    g.lineWidth = 1;
-    g.beginPath();
-    g.arc(x, y - 3, 4, 0, Math.PI * 2);
-    g.stroke();
   }
 }

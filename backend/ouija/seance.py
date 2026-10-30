@@ -9,6 +9,7 @@ from __future__ import annotations
 import re
 from datetime import datetime
 
+from .explain import explain
 from .gitwalk import Commit, main_identifier
 from .medium import consult
 from .ollama import ChatJSON
@@ -98,6 +99,7 @@ def run(
     extra_sources: list[Source] | None = None,
     passages_shown: int = 16,
     passages_chosen: int = 3,
+    with_card: bool = True,
 ) -> dict:
     if not commits:
         raise ValueError("no commits touched this line")
@@ -141,6 +143,7 @@ def run(
         )
     silent = not quotes
     newest = commits[0]
+    card = explain(llm, path, line_text, quotes, silent) if with_card else None
     return {
         "repo": f"{owner}/{repo}",
         "path": path,
@@ -166,6 +169,7 @@ def run(
         "silence": SILENCE if silent else None,
         "quotes": quotes,
         "medium": "" if silent else answer["medium"],
+        "card": card,
         "stats": {
             "commits_walked": len(commits),
             "sources": len(sources),
