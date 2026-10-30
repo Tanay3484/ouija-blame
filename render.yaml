@@ -1,0 +1,44 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+#
+#   ouija-blame    the app, the gallery and the API in one container (Python, git); holds no GitHub token
+#   ouija-ollama   private Ollama server with gemma3:4b baked in: the medium
+#
+# Both must be in the same region to reach each other privately. Gemma 4B needs about 3.5 GB loaded, so
+# its service is 2c-4g (as in Week 3). The web service clones public repos up to 150 MB for live séances.
+services:
+  - type: web
+    name: ouija-blame
+    runtime: docker
+    region: singapore
+    plan: starter
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: OB_MODEL
+        value: gemma3:4b
+      - key: OB_LLM_TIMEOUT_S
+        value: "240"
+      # One thread per CPU of the Ollama service.
+      - key: OB_LLM_NUM_THREAD
+        value: "2"
+      - key: OB_OLLAMA_URL
+        fromService:
+          type: pserv
+          name: ouija-ollama
+          property: hostport
+
+  - type: pserv
+    name: ouija-ollama
+    runtime: docker
+    region: singapore
+    plan: 2c-4g
+    branch: main
+    dockerfilePath: ./ollama/Dockerfile
+    dockerContext: ./ollama
+    envVars:
+      # Tells Render which port Ollama listens on. Without it the hostport that ouija-blame's
+      # OB_OLLAMA_URL is built from defaults to 10000 and every model call is refused.
+      - key: PORT
+        value: "11434"

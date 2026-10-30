@@ -35,3 +35,4 @@ Thumbs.db
 # clone bookkeeping
 data/*.log
 data/clones.done
+data/shots/
