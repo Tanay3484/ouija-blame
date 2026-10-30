@@ -105,23 +105,29 @@ introducing them. Fields are in the order `found`, `passages`, `medium`; every s
 
 All `@ai` this week except where marked. Commits cite task and requirement ids.
 
-- [ ] T1 Scaffold: package, settings, ruff, pytest, CI `tests` job (R4.5)
-- [ ] T2 `gitwalk` walk, blame, `log -S`, with tests on a temp repo built in the test (R1.1, R3.3)
-- [ ] T3 `links`, `sources`, cutoff and bot filters, with tests (R1.2, R3.2)
-- [ ] T4 `verify` quote checker and `rank`, with tests (R2.1, R2.3)
-- [ ] T5 `medium` prompt, schema and parsing with a fake model; `seance.run` (R2.2, R2.4, R2.5, R1.4)
-- [ ] T6 `entire` checkpoint reader (R1.3)
-- [ ] T7 Miner and cached GitHub client; mine about 50 cases (R3.1)
-- [ ] T8 Answer key: read each revert's PR, write the reason or drop the case (R3.1)
-- [ ] T9 Methods B1–B3 and the séance over all cases; blind grading file (R3.2–R3.4)
-- [ ] T10 Grading by Claude; `stats.py` and `results/summary.md` (R3.4, R3.5)
-- [ ] T11 API with rate limit, gallery built from the evaluation run (R4.1, R4.3, R4.4)
-- [ ] T12 App: pixel crystal ball, Ouija planchette, séance and gallery screens, browser-side GitHub calls (R4.1, R4.2, R2.4, R2.5)
-- [ ] T13 Dockerfile, Ollama service, `render.yaml`; deploy and test logged out on a phone (R4.5)
-- [ ] T14 README, licence, post draft in `drafts/` with TODO(Tanay) markers
+- [x] T1 Scaffold: package, settings, ruff, pytest, CI `tests` job (R4.5)
+- [x] T2 `gitwalk` walk, blame, `log -S`, with tests on a temp repo built in the test (R1.1, R3.3)
+- [x] T3 `links`, `sources`, cutoff and bot filters, with tests (R1.2, R3.2)
+- [x] T4 `verify` quote checker and `rank`, with tests (R2.1, R2.3)
+- [x] T5 `medium` prompt, schema and parsing with a fake model; `seance.run` (R2.2, R2.4, R2.5, R1.4)
+- [x] T6 `entire` checkpoint reader (R1.3)
+- [x] T7 Miner and cached GitHub client; mine about 50 cases (R3.1)
+- [x] T8 Answer key: read each revert's PR, write the reason or drop the case (R3.1)
+- [x] T9 Methods B1–B3 and the séance over all cases; blind grading file (R3.2–R3.4)
+- [x] T10 Grading by Claude; `stats.py` and `results/summary.md` (R3.4, R3.5)
+- [x] T11 API with rate limit, gallery built from the evaluation run (R4.1, R4.3, R4.4)
+- [x] T12 App: pixel crystal ball, Ouija planchette, séance and gallery screens, browser-side GitHub calls (R4.1, R4.2, R2.4, R2.5)
+- [x] T13 Dockerfile, Ollama service, `render.yaml`; deploy and test logged out on a phone (R4.5)
+- [x] T14 README, licence, post draft in `drafts/` with TODO(Tanay) markers
 - [ ] T15 `@human` Tanay re-grades 10 random cases blind; agreement goes in the post (R3.4)
 - [ ] T16 `@human` Tanay's opening in his own words, first-user session, publishing
 
 ## Changelog
 
 - 2026-10-30: First draft; requirements, design and tasks in one file because of the deadline.
+- 2026-10-31: Built. Changes from the draft: the PR focus is the 4 newest commits plus the origin (not 8),
+  to fit a visitor's 60 unauthenticated GitHub calls an hour; the evaluation's GitHub client calls the `gh`
+  CLI so the token never passes through our code; grading has two levels (R the revert's reason, E another
+  written reason, N none) after the first séances showed the reason a line was written and the reason it
+  must stay usually differ; evidence over 400 words is graded from an excerpt (stated in the post).
+  Known gap: `git log -L` does not follow a line across file moves.

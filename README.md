@@ -19,8 +19,22 @@ The test set is code that someone deleted because it looked pointless, it broke,
 back. Each revert is a real "why does this exist?" with the answer written down. Every method sees only
 history from before the deletion; the revert is the answer key.
 
-Results, method and limits: [`results/summary.md`](results/summary.md). Everything there is produced by
-the scripts below from files in `results/`.
+45 such lines from Rails, Kubernetes, Home Assistant, Ansible and Istio, graded blind to method:
+
+| Method | Gives the revert's reason | Gives a written reason (any) | Words to read (median) |
+|---|---|---|---|
+| `git blame` message | 7/45 | 19/45 | 12 |
+| blame + its whole PR | 7/45 | 29/45 | 268 |
+| `git log -S`, 5 oldest | 5/45 | 15/45 | 41 |
+| **séance** | **8/45** | **28/45** | **67** |
+
+The séance finds a written reason far more often than blame (+20 points, 95% CI +9 to +33), about as
+often as reading the whole PR, in a quarter of the reading. Its main weakness: Gemma 4B rarely stays
+silent (1 of 13 lines where no method found a reason). Details, intervals and limits:
+[`results/summary.md`](results/summary.md). Everything there is produced by the scripts below from files
+in `results/`.
+
+![A séance on a Kubernetes storage class](docs/images/seance-kubernetes.png)
 
 | Step | Command | Output |
 |------|---------|--------|
