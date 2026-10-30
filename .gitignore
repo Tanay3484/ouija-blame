@@ -31,3 +31,7 @@ drafts/
 .idea/
 .DS_Store
 Thumbs.db
+
+# clone bookkeeping
+data/*.log
+data/clones.done
