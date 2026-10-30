@@ -1,5 +1,8 @@
 """A disk-cached GitHub REST client, for the evaluation only. The server never holds a token.
 
+Calls go through the local `gh` CLI (`gh api`), so the evaluation uses Tanay's existing login without
+the token ever passing through this code (Tanay agreed to the `gh` login for local mining).
+
 Every response is stored under `cache_dir` by path, so a rerun of the evaluation makes no calls. A 404 is
 cached as None. Lists are fetched to at most `max_pages` pages of 100.
 """
@@ -8,36 +11,23 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import subprocess
 import time
 from pathlib import Path
 
-import httpx
-
 _LIST_SUFFIXES = ("/comments", "/reviews", "/pulls")
 
 
-def gh_token() -> str | None:
-    """The token of the local `gh` login, if there is one (Tanay agreed to this for local mining)."""
-    if tok := os.environ.get("GITHUB_TOKEN"):
-        return tok
-    try:
-        out = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True, timeout=10)
-    except (OSError, subprocess.TimeoutExpired):
-        return None
-    return out.stdout.strip() or None
+class GitHubError(Exception):
+    pass
 
 
 class CachedGitHub:
-    def __init__(self, cache_dir: str, token: str | None = None, max_pages: int = 3) -> None:
+    def __init__(self, cache_dir: str, max_pages: int = 3, offline: bool = False) -> None:
         self.dir = Path(cache_dir)
         self.dir.mkdir(parents=True, exist_ok=True)
         self.max_pages = max_pages
-        headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
-        if token:
-            headers["Authorization"] = f"Bearer {token}"
-        self._http = httpx.Client(base_url="https://api.github.com", headers=headers, timeout=30)
+        self.offline = offline
         self.calls = 0
 
     def _file(self, path: str) -> Path:
@@ -49,33 +39,41 @@ class CachedGitHub:
     def get(self, path: str, default=None):
         f = self._file(path)
         if f.exists():
-            return json.loads(f.read_text(encoding="utf-8"))["data"]
+            data = json.loads(f.read_text(encoding="utf-8"))["data"]
+            return data if data is not None else default
+        if self.offline:
+            return default
         data = self._fetch(path)
         f.write_text(json.dumps({"path": path, "data": data}), encoding="utf-8")
         return data if data is not None else default
 
-    def _fetch(self, path: str):
-        is_list = path.endswith(_LIST_SUFFIXES)
-        items: list = []
-        for page in range(1, (self.max_pages if is_list else 1) + 1):
-            params = {"per_page": 100, "page": page} if is_list else None
-            for attempt in range(4):
-                self.calls += 1
-                r = self._http.get("/" + path, params=params)
-                if r.status_code in (403, 429) and "rate limit" in r.text.lower():
-                    reset = int(r.headers.get("x-ratelimit-reset", time.time() + 60))
-                    time.sleep(max(5, min(900, reset - time.time() + 2)))
-                    continue
-                if r.status_code >= 500 and attempt < 3:
-                    time.sleep(2 * (attempt + 1))
-                    continue
-                break
-            if r.status_code in (404, 410, 422):
+    def _gh(self, url: str):
+        for attempt in range(5):
+            self.calls += 1
+            out = subprocess.run(
+                ["gh", "api", "-H", "Accept: application/vnd.github+json", url],
+                capture_output=True,
+                timeout=60,
+            )
+            err = out.stderr.decode("utf-8", "replace")
+            if out.returncode == 0:
+                return json.loads(out.stdout.decode("utf-8", "replace") or "null")
+            if any(f"HTTP {c}" in err for c in ("404", "410", "422", "451")):
                 return None
-            r.raise_for_status()
-            data = r.json()
-            if not is_list:
-                return data
+            if "rate limit" in err.lower() or "HTTP 5" in err:
+                time.sleep(min(120, 15 * (attempt + 1)))
+                continue
+            raise GitHubError(f"gh api {url}: {err.strip()[:300]}")
+        raise GitHubError(f"gh api {url}: gave up after retries")
+
+    def _fetch(self, path: str):
+        if not path.endswith(_LIST_SUFFIXES):
+            return self._gh(path)
+        items: list = []
+        for page in range(1, self.max_pages + 1):
+            data = self._gh(f"{path}?per_page=100&page={page}")
+            if data is None:
+                return None if page == 1 else items
             items.extend(data)
             if len(data) < 100:
                 break

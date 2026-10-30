@@ -31,7 +31,7 @@ SILENCE = "I never wrote down why."
 _NOREPLY = re.compile(r"^(?:\d+\+)?([\w-]+)@users\.noreply\.github\.com$", re.I)
 
 
-def focus(commits: list[Commit], k: int = 8) -> list[Commit]:
+def focus(commits: list[Commit], k: int = 5) -> list[Commit]:
     """The commits whose PRs we read: the newest few and, always, the one that first wrote the line."""
     if len(commits) <= k:
         return commits

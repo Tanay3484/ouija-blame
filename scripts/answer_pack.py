@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "backend"))
 
-from ouija.github import CachedGitHub, gh_token  # noqa: E402
+from ouija.github import CachedGitHub  # noqa: E402
 from ouija.links import linked_issues, prs_in_message  # noqa: E402
 from ouija.sources import is_bot  # noqa: E402
 
@@ -28,7 +28,7 @@ def clip(text: str, n: int = LIMIT) -> str:
 
 
 def main() -> None:
-    gh = CachedGitHub(str(ROOT / "data" / "cache" / "github"), token=gh_token())
+    gh = CachedGitHub(str(ROOT / "data" / "cache" / "github"))
     cases = [
         json.loads(ln)
         for ln in (ROOT / "results" / "cases.jsonl").read_text(encoding="utf-8").splitlines()

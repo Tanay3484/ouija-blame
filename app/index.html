@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d0a1a" />
+    <meta name="description" content="Ask a line of code why it exists. The ghost of whoever wrote it answers, but only in words they actually wrote, each one linked." />
+    <meta property="og:title" content="Ouija Blame: a séance for the engineer who left" />
+    <meta property="og:description" content="git blame shows the last commit. The ghost goes back to the first, and quotes its author word for word, or admits it never wrote down why." />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>Ouija Blame: a séance for the engineer who left</title>
+  </head>
+  <body>
+    <header class="top">
+      <p class="kicker">DEV Hacktoberfest 2026 · Week 4 · Ghost in the Machine</p>
+      <h1 class="logo">Ouija<span>Blame</span></h1>
+      <p class="lede">
+        Every codebase has a line nobody dares delete. The person who knew why it is there has left.
+        Ask the line, and the ghost of whoever wrote it answers, <strong>only in words they actually wrote</strong>,
+        each one linked to the commit, pull request or review where they wrote it. If they never wrote the reason
+        down, the ghost says so.
+      </p>
+    </header>
+
+    <main>
+      <section id="altar" class="altar" aria-label="The séance">
+        <canvas id="scene" class="pixel" aria-hidden="true"></canvas>
+        <ol id="log" class="log" aria-live="polite"></ol>
+        <canvas id="ouija" class="pixel ouija" aria-hidden="true"></canvas>
+      </section>
+
+      <section id="answer" class="answer" aria-live="polite" hidden></section>
+
+      <section class="gallery" aria-labelledby="gallery-title">
+        <h2 id="gallery-title">Haunted lines</h2>
+        <p class="note">
+          Each of these lines was deleted by someone who thought it was pointless. It broke, and it was put back.
+          Each séance only heard what was written <em>before</em> the deletion, so you can check what the ghost
+          said against why the line really had to come back.
+        </p>
+        <div id="gallery-grid" class="grid"></div>
+      </section>
+
+      <section class="ask-wrap" aria-labelledby="ask-title">
+        <h2 id="ask-title">Hold your own séance</h2>
+        <form id="ask" class="ask">
+          <label for="line-url">A GitHub link to one line of a public repo</label>
+          <input id="line-url" type="url" inputmode="url" autocomplete="off" required
+            placeholder="https://github.com/owner/repo/blob/main/path/file.go#L42" />
+          <details>
+            <summary>Your own GitHub token (optional)</summary>
+            <p class="note">
+              GitHub lets each browser make 60 calls an hour, about two séances. A token raises that. It stays in this
+              tab, is sent only to api.github.com, and never reaches our server. A fine-grained token with no
+              permissions is enough for public repos.
+            </p>
+            <input id="token" type="password" autocomplete="off" placeholder="github_pat_…" />
+          </details>
+          <button type="submit">Summon</button>
+          <p id="ask-error" class="error" role="alert"></p>
+          <p class="note">Live séances take repos up to 150 MB. The medium runs on a small CPU and can take a minute.</p>
+        </form>
+      </section>
+
+      <section class="how" aria-labelledby="how-title">
+        <h2 id="how-title">How the séance works</h2>
+        <ol>
+          <li><strong>Walk the line back.</strong> <code>git blame</code> shows the last commit that touched a line, which is often a reformat. <code>git log -L</code> follows the line back through every change to the commit that first wrote it.</li>
+          <li><strong>Gather what was written.</strong> Commit messages, the pull requests behind them, review comments, linked issues, and agent-session prompts when a commit has an Entire checkpoint.</li>
+          <li><strong>The medium points.</strong> Gemma, an open-weight model, reads the closest passages and picks up to three that say why the line exists. It can only pick passage numbers. It cannot write a word of the quote.</li>
+          <li><strong>Code checks every word.</strong> Each quote must appear word for word in its source, or it is thrown out. If nothing is left, the ghost says “I never wrote down why.”</li>
+        </ol>
+        <h3>Ground rules</h3>
+        <ul>
+          <li>Only public words, always with a link to where they were written.</li>
+          <li>The medium's own words are shown apart and labelled as the model's.</li>
+          <li>The people here left projects. They moved on; nobody here died. The ghost is a generic sprite, never a photo.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>Open source (MIT): <a href="https://github.com/Tanay3484/ouija-blame">github.com/Tanay3484/ouija-blame</a>. Built by Tanay with Claude Code. Gemma runs on our own server: no closed AI APIs.</p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

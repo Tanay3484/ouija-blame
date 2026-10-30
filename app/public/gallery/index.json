@@ -1,0 +1,112 @@
+[
+ {
+  "id": "rails-0f9249c9",
+  "repo": "rails/rails",
+  "path": "actionmailer/lib/action_mailer.rb",
+  "line_text": "  autoload :DeliveryJob",
+  "deletion_subject": "Remove deprecated `ActionMailer::DeliveryJob` and `ActionMailer::Parameterized::DeliveryJob`",
+  "revert_subject": "Revert \"Remove deprecated `ActionMailer::DeliveryJob` and `ActionMailer::Parameterized::DeliveryJob`\"",
+  "deleted_on": "2020-05-05T00:31:14-04:00",
+  "ghost": "@dhh",
+  "silent": false
+ },
+ {
+  "id": "rails-24367edb",
+  "repo": "rails/rails",
+  "path": "railties/lib/rails/generators.rb",
+  "line_text": "        javascripts: true,",
+  "deletion_subject": "Remove `javascripts` and `javascript_engine` options for generators",
+  "revert_subject": "Revert \"Remove `javascripts` and `javascript_engine` options for generators\"",
+  "deleted_on": "2018-10-22T00:12:15+03:00",
+  "ghost": "José Valim",
+  "silent": false
+ },
+ {
+  "id": "rails-29679df0",
+  "repo": "rails/rails",
+  "path": "activesupport/lib/active_support/notifications/instrumenter.rb",
+  "line_text": "      def children # :nodoc:",
+  "deletion_subject": "Remove deprecated `children` and `parent_of?` on ActiveSupport::Notifications::Event",
+  "revert_subject": "Revert \"Remove deprecated `children` and `parent_of?` on ActiveSupport::Notifications::Event\"",
+  "deleted_on": "2023-03-03T00:38:35+00:00",
+  "ghost": "@jhawthorn",
+  "silent": false
+ },
+ {
+  "id": "rails-376ffe0e",
+  "repo": "rails/rails",
+  "path": "activerecord/lib/active_record/associations/belongs_to_association.rb",
+  "line_text": "            if target && !stale_target?",
+  "deletion_subject": "Remove `counter_cache_target` which is no longer called",
+  "revert_subject": "Revert \"Remove `counter_cache_target` which is no longer called\"",
+  "deleted_on": "2018-09-26T06:10:32+09:00",
+  "ghost": "Jon Leighton",
+  "silent": false
+ },
+ {
+  "id": "rails-51665ffa",
+  "repo": "rails/rails",
+  "path": "activerecord/lib/active_record/schema_dumper.rb",
+  "line_text": "        pool = @connection.pool",
+  "deletion_subject": "Remove migrations filter from the schema dump",
+  "revert_subject": "Revert \"Remove migrations filter from the schema dump\"",
+  "deleted_on": "2026-07-31T08:34:12+02:00",
+  "ghost": "@fxn",
+  "silent": false
+ },
+ {
+  "id": "rails-6d1252cf",
+  "repo": "rails/rails",
+  "path": "activejob/lib/active_job/queue_adapters.rb",
+  "line_text": "    autoload :SuckerPunchAdapter",
+  "deletion_subject": "Remove sucker_punch ActiveJob::Queue adapter (#52935)",
+  "revert_subject": "Revert \"Remove sucker_punch ActiveJob::Queue adapter (#52935)\"",
+  "deleted_on": "2024-09-14T17:12:32-07:00",
+  "ghost": "@seuros",
+  "silent": false
+ },
+ {
+  "id": "rails-b1b2c6d5",
+  "repo": "rails/rails",
+  "path": "activesupport/lib/active_support.rb",
+  "line_text": "    DateAndTime::Compatibility.preserve_timezone",
+  "deletion_subject": "Remove deprecated support for the pre-Ruby 2.4 behavior of `to_time`",
+  "revert_subject": "Revert \"Remove deprecated support for the pre-Ruby 2.4 behavior of `to_time`\"",
+  "deleted_on": "2024-05-01T18:44:31+00:00",
+  "ghost": "Andrew White",
+  "silent": false
+ },
+ {
+  "id": "rails-dd7a6737",
+  "repo": "rails/rails",
+  "path": "actionview/lib/action_view/base.rb",
+  "line_text": "      _old_output_buffer, _old_virtual_path, _old_template = @output_buffer, @virtual_path, @current_template",
+  "deletion_subject": "Remove redundant @virtual_path variable",
+  "revert_subject": "Revert \"Remove redundant @virtual_path variable\"",
+  "deleted_on": "2020-05-26T15:53:11-04:00",
+  "ghost": "@tenderlove",
+  "silent": false
+ },
+ {
+  "id": "rails-fa791fb8",
+  "repo": "rails/rails",
+  "path": "railties/lib/rails/commands/server/server_command.rb",
+  "line_text": "      argument :using, optional: true",
+  "deletion_subject": "Remove deprecated `server` argument from the rails server command",
+  "revert_subject": "Revert \"Remove deprecated `server` argument from the rails server command\"",
+  "deleted_on": "2019-01-17T16:08:35-05:00",
+  "ghost": "@gsamokovarov",
+  "silent": false
+ },
+ {
+  "id": "rails-f6db31ec",
+  "repo": "rails/rails",
+  "path": "activerecord/lib/active_record/scoping/named.rb",
+  "line_text": "          valid_scope_name?(name)",
+  "deletion_subject": "Remove valid_scope_name? check - use ruby",
+  "revert_subject": "Revert \"Remove valid_scope_name? check - use ruby\"",
+  "deleted_on": "2012-03-21T20:30:48+00:00",
+  "ghost": "Jon Leighton",
+  "silent": true
+ }
+]
