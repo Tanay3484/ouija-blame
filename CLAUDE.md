@@ -100,8 +100,10 @@ results pending at the time of writing.
   sessions; read transcripts for work content before anything goes public); no unlock game (no time).
 - 2026-10-30/31 (overnight, Tanay busy with work all week): built through with Tanay's agreement, specs
   in one file (`specs/001-ouija-blame-mvp/spec.md`). Live at <https://ouija-blame.onrender.com> from the
-  `build` branch: web `srv-dbie6h5g1s2s73ejeje0` (starter), `ouija-ollama` `srv-dbie6de7bikc73am2nkg`
-  (2c-4g, Gemma 3 4B). After Tanay merges the PR, switch both services to `main`. Evaluation: 45 reverted
+  `main` (PR #1 merged 2026-10-31; both services switched from `build`): web `srv-dbie6h5g1s2s73ejeje0`
+  (starter), `ouija-ollama` `srv-dbie6de7bikc73am2nkg` (2c-4g, Gemma 3 4B). Repo public since 2026-10-31,
+  `main` protected like Week 3 (PR, 1 approval, strict `tests` check, conversations resolved, no force
+  pushes or deletions, admins exempt). All changes now go through a PR. Evaluation: 45 reverted
   deletions (Rails, Kubernetes, Home Assistant, Ansible, Istio), blind-graded by Claude; séance 28/45 any
   written reason vs blame 19/45, blame+PR 29/45; revert's reason 8/45 for séance, 5–7 for baselines;
   main failure: Gemma rarely stays silent (1 of 13 unanswerable). Numbers in `results/summary.md`. Post
