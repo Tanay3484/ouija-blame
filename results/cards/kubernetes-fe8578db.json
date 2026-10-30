@@ -1,0 +1,11 @@
+{
+ "what": "This line clears the `GCE_SERVICE_ACCOUNT` environment variable, ensuring that tests utilize credentials provided directly within the container.",
+ "why": "Erick Fejta originally stated that relying on the metadata server for authentication was undesirable [1]. He then clarified that the script injects `service-account.json` into the test container, and setting `GCE_SERVICE_ACCOUNT` would force the use of the metadata server, which was a known issue [2]. The PR by Fejta explicitly highlighted this conflict [3].",
+ "next": "Verify that the injected `service-account.json` is correctly placed and accessible within the test container environment.",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

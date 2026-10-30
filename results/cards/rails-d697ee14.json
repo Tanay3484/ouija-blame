@@ -1,0 +1,9 @@
+{
+ "what": "This line includes the ActiveSupport extension for converting object attributes to URL parameters or query strings.",
+ "why": "Xavier Noria added this to ensure that the `to_param` and `to_query` methods were available for use with arrays and hashes, providing a consistent way to build URLs with ActiveSupport [1].",
+ "next": "Before making any changes, verify that the `to_param` and `to_query` methods are still needed for array and hash conversions within this file and its dependencies.",
+ "cites": [
+  1
+ ],
+ "error": null
+}

@@ -1,0 +1,9 @@
+{
+ "what": "This line defines a method named `interpolate` that takes SQL and a record as input and presumably modifies the SQL based on the record's attributes.",
+ "why": "Jon Leighton’s note indicates this method was originally implemented to handle private methods being delegated through the `Module#delegate` mechanism. The previous implementation relied on the delegation behavior ignoring method visibility, which is now a known issue [1].",
+ "next": "Before making any changes, verify that the delegation of private methods through `Module#delegate` is still the intended behavior and that this interpolation method is still necessary for that functionality.",
+ "cites": [
+  1
+ ],
+ "error": null
+}

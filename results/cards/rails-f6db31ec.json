@@ -1,0 +1,7 @@
+{
+ "what": "This line checks if a given scope name is valid according to Active Record's naming conventions.",
+ "why": "Nobody wrote down why this line exists, at least not anywhere the séance could reach.",
+ "next": "Before making any changes, verify that the scope name validation is still necessary and aligns with current Active Record best practices.",
+ "cites": [],
+ "error": null
+}

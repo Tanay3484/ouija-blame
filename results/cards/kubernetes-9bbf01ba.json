@@ -1,0 +1,10 @@
+{
+ "what": "This line specifies the API version for Kubernetes storage resources, specifically related to StorageClasses.",
+ "why": "Historically, Kubernetes automatically created StorageClasses to satisfy PersistentVolumeClaim requests. This line ensures compatibility with older versions where this automatic behavior was the standard. The comments indicate that administrators could control this behavior through a configuration variable or by deleting the StorageClass API object [1][2].",
+ "next": "Verify that the `storage.k8s.io/v1` API version is still appropriate for the current Kubernetes version and the intended use of the StorageClass.",
+ "cites": [
+  1,
+  2
+ ],
+ "error": null
+}

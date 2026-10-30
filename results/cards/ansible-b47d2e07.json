@@ -1,0 +1,11 @@
+{
+ "what": "This function attempts to retrieve a lookup definition based on a given name and a set of arguments and keyword arguments.",
+ "why": "The code was initially created to support query aliases for lookups, specifically renaming the 'L' alias to 'q/query' to improve readability and searchability, as discussed by kustodian [3]. Brian Coca aimed to standardize the naming convention and enforce `wantlist=true` [1][2].",
+ "next": "Before making any changes, verify that the 'q/query' alias is still the intended naming strategy and that the `wantlist=true` setting remains appropriate for the lookup's functionality.",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

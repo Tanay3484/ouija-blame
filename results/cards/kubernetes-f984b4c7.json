@@ -1,0 +1,11 @@
+{
+ "what": "This line calculates the maximum number of IP addresses within a given CIDR block based on its subnet mask.",
+ "why": "The code was initially designed to create a stateful IP allocator for the PortalIP service, intended to be HA and persist state in etcd [1][2]. The reviewer suggested adding a mechanism to track remaining IP addresses for potential heuristics and warnings [3], and the `max` value was intended to represent this limit.",
+ "next": "Before making any changes, verify that the `RangeSize` function is still the correct method for determining the maximum IP address count within a CIDR block, and confirm that the `max` value is consistently used and understood within the et",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

@@ -1,0 +1,10 @@
+{
+ "what": "This line uses autoloading to automatically load the SuckerPunch adapter class when it’s needed within the ActiveJob library.",
+ "why": "The code was added to resolve a bug where some backends didn't properly require the adapter initially. It also included a temporary fix to automatically load the TestAdapter, avoiding the need for explicit requiring [1][2].",
+ "next": "Before making any changes, verify that the autoloading of the SuckerPunch adapter is still necessary for the intended functionality of ActiveJob.",
+ "cites": [
+  1,
+  2
+ ],
+ "error": null
+}

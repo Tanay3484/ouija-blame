@@ -50,7 +50,7 @@ const board = new Ouija($<HTMLCanvasElement>("#ouija"), { onRest: (s) => void on
 const log = $<HTMLOListElement>("#log");
 function say(line: string) {
   log.append(el("li", "", line));
-  while (log.children.length > 5) log.firstElementChild?.remove();
+  while (log.children.length > 4) log.firstElementChild?.remove();
 }
 
 async function type(target: HTMLElement, text: string) {

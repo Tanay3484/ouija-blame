@@ -74,6 +74,11 @@ h3 { font-size: 11px; color: var(--mist); margin: 18px 0 8px; }
 .scene { width: 100%; aspect-ratio: 192 / 128; }
 .ouija { width: 100%; aspect-ratio: 192 / 60; }
 .log { list-style: none; margin: 0; padding: 8px 14px; min-height: 2.6em; background: #120c24; color: var(--cyan); font-size: 20px; }
+@media (min-width: 1000px) {
+  /* A fixed height, so a long séance never pushes the board off the screen. */
+  .log { height: calc(4 * 1.35em + 16px); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+  .log li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
 .log:empty::before { content: "› The table is set. Pick a haunted line, paste a link, or rest the planchette on YES."; color: var(--dim); }
 .log li::before { content: "› "; color: var(--mist); }
 .board-help { padding: 6px 14px 10px; background: #120c24; }

@@ -1,0 +1,11 @@
+{
+ "what": "This line prevents setting the `status.loadBalancer` field on a service if the service type is not a Load Balancer and the `status.Ingress` field is not empty.",
+ "why": "Tim Hockin initially identified a problem where setting the `status.loadBalancer` field on non-Load Balancer services was allowed, but updates would immediately clear the field [1][2]. He reasoned that relying on this behavior was fragile due to the way updates cleared the `status.ingress` field. The change was intended to enforce that this combination of fields should not be set, preventing validation failures [2][3].",
+ "next": "Check if there are any downstream systems or processes that depend on this validation logic, and assess the potential impact of removing it.",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

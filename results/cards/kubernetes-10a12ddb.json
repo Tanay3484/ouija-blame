@@ -1,0 +1,11 @@
+{
+ "what": "This line specifies the API group 'appsv1' and the Kubernetes API version 'v1' for deletion operations.",
+ "why": "Initially, this line was part of a workaround – a 'hack' – used in the deployment reaper to delete resources. However, subsequent development shifted away from this approach, relying entirely on server-side garbage collection for object removal. The original implementation was deemed flawed and unreliable, not working consistently across clients or API versions [1][2][3].",
+ "next": "Before making any changes, verify that the deletion process is correctly relying on server-side garbage collection and that no other client-side logic is dependent on this specific API group and version [1][2].",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

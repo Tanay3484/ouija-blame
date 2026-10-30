@@ -1,0 +1,11 @@
+{
+ "what": "This line serves as a comment introducing the functionality of the Neato botvac component within Home Assistant.",
+ "why": "The code was initially added to support Neato vacuum cleaners, specifically including battery, status, and schedule sensors [2]. The commit history indicates this was part of a larger refactor of Neato support [1], and the example configuration shows the intended use of the component [3].",
+ "next": "Before making any changes, verify that the component still functions correctly with the existing sensors and configuration options.",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

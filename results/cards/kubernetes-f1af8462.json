@@ -1,0 +1,10 @@
+{
+ "what": "This line sets a feature gate named `ComponentSLIs` to the value `true`, enabling the Component SLIs feature.",
+ "why": "The code was added to enable a new feature – the Component health SLI endpoint – and this gate controls whether that endpoint is active [2]. The reviewer suggests a more centralized approach to feature gating, implying this might be a specific instance of a broader strategy [3].",
+ "next": "Before making any changes, verify if there's a central location for managing feature gates, as suggested by the reviewer.",
+ "cites": [
+  2,
+  3
+ ],
+ "error": null
+}

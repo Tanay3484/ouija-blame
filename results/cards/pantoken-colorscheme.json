@@ -1,0 +1,11 @@
+{
+ "what": "This line sets the `colorScheme` style property of the root element of the source document to 'light'.",
+ "why": "Danny Wahl identified that the tinymce editor's injected iframe was defaulting to light mode, despite the theme settings in Pantoken being configured for a dark theme. The goal was to explicitly force the iframe's background color to 'light' to align with the theme and resolve a visual discrepancy [1][3]. This was part of a larger effort to correctly apply theme tokens to the tinymce editor's iframe [2].",
+ "next": "Before making any changes, verify that the intention is still to force the iframe background to 'light' and that this aligns with the desired behavior of the theme switcher [3].",
+ "cites": [
+  1,
+  2,
+  3
+ ],
+ "error": null
+}

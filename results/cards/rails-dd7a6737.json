@@ -1,0 +1,10 @@
+{
+ "what": "This line saves the original output buffer, virtual path, and current template to new variables before potentially modifying them.",
+ "why": "The code was introduced to prevent the digestor from relying on side effects of the template renderer, specifically the `rendered_format` setting. The original approach was problematic because it depended on the renderer changing the lookup context, which was deemed undesirable. [1][3] The reviewer, javan, explained that the `@current_template` stack is used by the digestor to determine the template format, and this line ensures the digestor receives the correct format data",
+ "next": "Check if any other parts of the codebase still rely on the `rendered_format` setting or the `@current_template` stack for generating keys.",
+ "cites": [
+  1,
+  3
+ ],
+ "error": null
+}
