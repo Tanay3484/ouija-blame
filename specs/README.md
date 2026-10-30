@@ -52,4 +52,5 @@ Phase 0 happens once per project. Phases 1–4 repeat per feature in its own num
 
 | ID | Feature | Phase | Status |
 |----|---------|-------|--------|
-| 000 | Brief (not written yet) | 0 | — |
+| 000 | Brief | 0 | Draft |
+| 001 | Ouija Blame MVP (`spec.md`: requirements, design, tasks in one file) | 1–4 | Draft |

@@ -93,9 +93,13 @@ results pending at the time of writing.
   post-writer, `.gitignore`). No GitHub repo yet: ask Tanay for the repo name, create it, make it public
   only when Tanay says so (Tanay may need to do it himself; the classifier blocked the agent in Week 3),
   then apply branch protection like Week 3 (PR, 1 approval, `tests` check, no force pushes).
-- **Next:** write `specs/000-brief/brief.md` (problem, real person, the evidence plan above, the
-  partner-category decisions, scope for 3½ days), stop, and ask Tanay to review. Then requirements, design,
-  tasks, each approved by Tanay. Offer the Week 2 unlock game again for the `@human` levels.
+- 2026-10-27: brief drafted. Name **Ouija Blame**. Private repo <https://github.com/Tanay3484/ouija-blame>
+  created and `main` pushed (branch protection once public). Tanay's answers: no token of his on Render
+  (server clones over plain git; visitors' browsers call the GitHub API, optional own token kept in the
+  tab); Entire is in (séance reads public `refs/entire/checkpoints/…`; Tanay installs the CLI to record
+  sessions; read transcripts for work content before anything goes public); no unlock game (no time).
+- **Next:** Tanay answers the local-token question and approves the brief; then requirements, design,
+  tasks, each approved by Tanay.
 - Good `@human` candidates (pure functions, 1–3 h each): the revert miner (find reverts and pair them with
   the deleted lines), the blame-to-PR linker (line → commit → PR → review threads), the citation checker
   (does every quoted span exist verbatim in the cited source?), the evaluation statistics (hit rates and a
