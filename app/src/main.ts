@@ -120,7 +120,14 @@ async function show(s: Seance, opts: { replay: boolean }) {
     await type(b, s.silence || "I never wrote down why.");
     out.append(el("p", "note", "Nothing in this line's history says why it exists. Ask someone who is still here, and then write the reason down where the next person will find it."));
   } else {
-    for (const q of s.quotes) await quote(q, who);
+    // A reviewer quoting the author word for word adds nothing new: show each text once.
+    const seen = new Set<string>();
+    for (const q of s.quotes) {
+      const key = q.text.replace(/\s+/g, " ").trim();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      await quote(q, who);
+    }
     if (s.medium) {
       const m = el("div", "medium");
       m.append(el("p", "kicker", "The medium (Gemma, an open-weight model) adds, in its own words:"));
