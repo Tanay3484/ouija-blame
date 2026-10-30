@@ -22,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from . import clones, gitwalk, seance
+from . import clones, entire, gitwalk, seance
 from .config import Settings, get_settings
 from .ollama import ChatJSON, OllamaClient
 from .ratelimit import RateLimiter, limit
@@ -123,6 +123,8 @@ def create_app(settings: Settings | None = None, llm: ChatJSON | None = None) ->
             seen = gitwalk.last_seen(repo_dir, sha, commits[-1].email)
         except gitwalk.GitError:
             seen = None
+        # Agent sessions recorded with Entire, when the walk's commits carry checkpoint trailers.
+        agent_sessions = entire.sources(repo_dir, commits, body.owner, body.repo)
         w = {
             "owner": body.owner,
             "repo": body.repo,
@@ -132,6 +134,7 @@ def create_app(settings: Settings | None = None, llm: ChatJSON | None = None) ->
             "line_text": line_text,
             "commits": commits,
             "last_seen": seen,
+            "extra": agent_sessions,
         }
         wid = walks.put(w)
         return {
@@ -167,6 +170,7 @@ def create_app(settings: Settings | None = None, llm: ChatJSON | None = None) ->
             github=_github(body),
             llm=model,
             last_seen=w["last_seen"],
+            extra_sources=w["extra"],
             passages_shown=s.passages_shown,
             passages_chosen=s.passages_chosen,
         )

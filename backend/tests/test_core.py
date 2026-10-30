@@ -263,3 +263,49 @@ def test_mine_finds_the_restored_line(haunted_repo):
     assert c.deletion == shas["deletion"] and c.parent == shas["format"]
     assert c.line == 2 and c.line_text.strip() == "s.retry( 1 )"
     assert c.cutoff.startswith("2024-01-01")
+
+
+# ---- Entire agent-session checkpoints ------------------------------------------------------------
+
+
+def test_entire_prompts_become_sources(tmp_path):
+    import subprocess
+
+    from ouija import entire
+
+    repo = tmp_path / "r"
+    repo.mkdir()
+
+    def g(*a):
+        out = subprocess.run(["git", "-C", str(repo), *a], capture_output=True, text=True)
+        assert out.returncode == 0, out.stderr
+        return out.stdout.strip()
+
+    g("init", "-q", "-b", "main")
+    g("config", "user.name", "Ada")
+    g("config", "user.email", "ada@example.com")
+    (repo / "theme.css").write_text("iframe { background: white; }\n", encoding="utf-8")
+    g("add", ".")
+    g("commit", "-q", "-m", "Keep the preview light\n\nEntire-Checkpoint: 01ABCDEFGHJK")
+    g("checkout", "-q", "--orphan", "cp")
+    g("rm", "-rq", "--cached", ".")
+    (repo / "theme.css").unlink()
+    (repo / "0").mkdir()
+    (repo / "0" / "prompt.txt").write_text(
+        "The preview should stay in light mode, because authors test content as readers see it.",
+        encoding="utf-8",
+    )
+    (repo / "0" / "metadata.json").write_text(
+        '{"agent": "Claude Code", "created_at": "2026-10-01T00:00:00Z"}'
+    )
+    g("add", "0")
+    g("commit", "-q", "-m", "Checkpoint")
+    g("update-ref", "refs/entire/checkpoints/JK/01ABCDEFGHJK", "HEAD")
+    g("checkout", "-q", "-f", "main")
+
+    commits = gitwalk.walk(str(repo), "main", "theme.css", 1)
+    assert entire.checkpoint_ids(commits[0].message) == ["01ABCDEFGHJK"]
+    [src] = entire.sources(str(repo), commits, "o", "r", fetched=True)
+    assert src.kind == "checkpoint" and src.author == "Ada"
+    assert "because authors test content" in src.raw
+    assert "Claude Code" in src.title

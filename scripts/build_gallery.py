@@ -52,8 +52,29 @@ def main() -> None:
                 "silent": s["silent"],
             }
         )
+    # Demos outside the evaluation (for example lines written with an agent, read from Entire checkpoints).
+    extras = []
+    for f in sorted((ROOT / "results" / "extra_seances").glob("*.json")):
+        s = json.loads(f.read_text(encoding="utf-8"))
+        sid = s["extra_id"]
+        (out_dir / f"{sid}.json").write_text(json.dumps(s, ensure_ascii=False), encoding="utf-8")
+        g = s["ghost"]
+        extras.append(
+            {
+                "id": sid,
+                "repo": s["repo"],
+                "path": s["path"],
+                "line_text": s["line_text"],
+                "deletion_subject": s.get("note", ""),
+                "revert_subject": "",
+                "deleted_on": "",
+                "ghost": f"@{g['login']}" if g.get("login") else g["name"],
+                "silent": s["silent"],
+            }
+        )
     order = {"kubernetes/kubernetes": 0, "rails/rails": 1, "home-assistant/core": 2}
     index.sort(key=lambda x: (x["silent"], order.get(x["repo"], 3), x["id"]))
+    index = extras + index
     (out_dir / "index.json").write_text(
         json.dumps(index, ensure_ascii=False, indent=1), encoding="utf-8"
     )

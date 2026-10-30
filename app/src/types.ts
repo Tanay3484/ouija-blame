@@ -40,6 +40,8 @@ export interface Seance {
   case?: { id: string; revert: string; deletion: string; deletion_subject: string; cutoff: string };
   revert_subject?: string;
   answer?: string;
+  /** Demo séances outside the evaluation say what they are. */
+  note?: string;
 }
 
 export interface GalleryItem {

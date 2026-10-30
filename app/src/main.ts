@@ -108,6 +108,7 @@ async function show(s: Seance, opts: { replay: boolean }) {
   meta.append(link(s.ghost.commit_url, `“${s.ghost.subject}”`), ".");
   if (s.ghost.last_seen) meta.append(` Last seen in this repo: ${month(s.ghost.last_seen)}.`);
   ghost.append(meta);
+  if (s.note) ghost.append(el("p", "meta held-out", s.note));
   if (s.case) {
     ghost.append(el("p", "meta held-out", `This séance only heard what was written before ${day(s.case.cutoff)}, the day someone deleted this line.`));
   }
@@ -176,7 +177,7 @@ async function loadGallery() {
 function card(it: GalleryItem): HTMLElement {
   const b = el("button", "card");
   b.type = "button";
-  b.append(el("p", "kicker", `${it.repo} · deleted ${it.deleted_on.slice(0, 4)}`));
+  b.append(el("p", "kicker", it.deleted_on ? `${it.repo} · deleted ${it.deleted_on.slice(0, 4)}` : `${it.repo} · written with an AI agent`));
   b.append(el("pre", "code", it.line_text.trim()));
   b.append(el("p", "card-sub", `“${it.deletion_subject}”`));
   b.append(el("p", "card-ghost", it.silent ? "The ghost stays silent" : `Summon ${it.ghost}`));
