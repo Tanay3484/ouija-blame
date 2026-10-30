@@ -1,0 +1,90 @@
+{
+ "repo": "home-assistant/core",
+ "path": "homeassistant/components/snapcast/config_flow.py",
+ "line": 55,
+ "line_text": "    async def async_step_import(self, import_config: dict[str, str]) -> FlowResult:",
+ "ghost": {
+  "name": "luar123",
+  "login": "luar123",
+  "first_wrote": "2023-03-30T07:42:09+02:00",
+  "commit": "f0710bae06e1d02df8fa70eb758b9386517d204e",
+  "commit_url": "https://github.com/home-assistant/core/commit/f0710bae06e1d02df8fa70eb758b9386517d204e",
+  "subject": "Add config-flow to Snapcast (#80288)",
+  "last_seen": "2023-05-24T08:16:09+02:00"
+ },
+ "blame": {
+  "commit": "f0710bae06e1d02df8fa70eb758b9386517d204e",
+  "subject": "Add config-flow to Snapcast (#80288)",
+  "author": "luar123",
+  "date": "2023-03-30T07:42:09+02:00",
+  "url": "https://github.com/home-assistant/core/commit/f0710bae06e1d02df8fa70eb758b9386517d204e"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Add config-flow to Snapcast (#80288)",
+   "author": "luar123",
+   "kind": "commit",
+   "url": "https://github.com/home-assistant/core/commit/f0710bae06e1d02df8fa70eb758b9386517d204e",
+   "created": "2023-03-30T07:42:09+02:00",
+   "title": "Add config-flow to Snapcast (#80288)",
+   "source_id": "commit:f0710bae06e1",
+   "is_ghost": true
+  },
+  {
+   "text": "* initial stab at snapcast config flow",
+   "author": "luar123",
+   "kind": "commit",
+   "url": "https://github.com/home-assistant/core/commit/f0710bae06e1d02df8fa70eb758b9386517d204e",
+   "created": "2023-03-30T07:42:09+02:00",
+   "title": "Add config-flow to Snapcast (#80288)",
+   "source_id": "commit:f0710bae06e1",
+   "is_ghost": true
+  },
+  {
+   "text": "* Split import flow from user flow. Fix tests.",
+   "author": "luar123",
+   "kind": "commit",
+   "url": "https://github.com/home-assistant/core/commit/f0710bae06e1d02df8fa70eb758b9386517d204e",
+   "created": "2023-03-30T07:42:09+02:00",
+   "title": "Add config-flow to Snapcast (#80288)",
+   "source_id": "commit:f0710bae06e1",
+   "is_ghost": true
+  }
+ ],
+ "medium": "These passages reveal the initial creation, splitting of flows, and subsequent test adjustments for the Snapcast configuration flow.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 74,
+  "passages": 126,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:f0710bae06e1#0",
+  "commit:f0710bae06e1#1",
+  "commit:f0710bae06e1#2",
+  "commit:f0710bae06e1#3",
+  "commit:f0710bae06e1#4",
+  "commit:f0710bae06e1#5",
+  "review_comment:1148631274#2",
+  "review_comment:1149221189#0",
+  "commit:f0710bae06e1#18",
+  "review_comment:997346081#0",
+  "pr:80288#2",
+  "review_comment:1144999493#2",
+  "commit:f0710bae06e1#10",
+  "review_comment:1145006218#1",
+  "review_comment:1145001603#0",
+  "review_comment:997349651#3"
+ ],
+ "case": {
+  "id": "core-40cb9337",
+  "revert": "4f99a71f6145180d10bce9259c4dfcce58b21107",
+  "deletion": "40cb9337c5b9c9c585ecbc72b1d4666037b12c69",
+  "deletion_subject": "Remove snapcast YAML configuration (#93547)",
+  "cutoff": "2023-06-05T18:28:08+02:00"
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "repo": "rails/rails",
+ "path": "actionpack/lib/action_view/helpers/form_helper.rb",
+ "line": 307,
+ "line_text": "        when String, Symbol",
+ "ghost": {
+  "name": "David Heinemeier Hansson",
+  "login": null,
+  "first_wrote": "2007-05-14T17:30:35+00:00",
+  "commit": "6e7b593992f8f6f8e783b87e7ab9d1d5a97063f7",
+  "commit_url": "https://github.com/rails/rails/commit/6e7b593992f8f6f8e783b87e7ab9d1d5a97063f7",
+  "subject": "Added record identifications to FormHelper#form_for and PrototypeHelper#remote_form_for [DHH]",
+  "last_seen": "2010-09-01T19:09:35-05:00"
+ },
+ "blame": {
+  "commit": "4f7a85d2c66f100f83e2fe264e1f03bf079f13dc",
+  "subject": "Revert \"Merge branch 'rails/master' into ujs\"",
+  "author": "Joshua Peek",
+  "date": "2010-01-30T14:39:41-06:00",
+  "url": "https://github.com/rails/rails/commit/4f7a85d2c66f100f83e2fe264e1f03bf079f13dc"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "More nested polymorphic url helper fixes. Closes #6432, references #8601.",
+   "author": "Jeremy Kemper",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/c7df5bd6ac256cf75631f8c59c1de1f96df02b17",
+   "created": "2007-06-07T21:35:01+00:00",
+   "title": "More nested polymorphic url helper fixes. Closes #6432, references #8601.",
+   "source_id": "commit:c7df5bd6ac25",
+   "is_ghost": false
+  },
+  {
+   "text": "Added record identifications to FormHelper#form_for and PrototypeHelper#remote_form_for [DHH]",
+   "author": "David Heinemeier Hansson",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/6e7b593992f8f6f8e783b87e7ab9d1d5a97063f7",
+   "created": "2007-05-14T17:30:35+00:00",
+   "title": "Added record identifications to FormHelper#form_for and PrototypeHelper#remote_form_for [DHH]",
+   "source_id": "commit:6e7b593992f8",
+   "is_ghost": true
+  },
+  {
+   "text": "Resources: url_for([parent, child]) generates /parents/1/children/2 for the nested resource. Likewise with the other simply helpful methods like form_for and link_to. Closes #6432.",
+   "author": "Jeremy Kemper",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/5dd3db86157ce2bd08c4ec07826d3aaf5c29f458",
+   "created": "2007-06-05T19:10:59+00:00",
+   "title": "Resources: url_for([parent, child]) generates /parents/1/children/2 for the nested resource. Likewise with the other simply helpful methods like form_for and link_to. Closes #6432.",
+   "source_id": "commit:5dd3db86157c",
+   "is_ghost": false
+  }
+ ],
+ "medium": "Conflicts arose from reverting changes to URL helper methods, addressing nested resource generation and form construction.",
+ "stats": {
+  "commits_walked": 7,
+  "sources": 7,
+  "passages": 10,
+  "shown_to_model": 10,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:4f7a85d2c66f#0",
+  "commit:4f7a85d2c66f#1",
+  "commit:4f7a85d2c66f#2",
+  "commit:4f7a85d2c66f#3",
+  "commit:5ced1225fa20#0",
+  "commit:c7df5bd6ac25#0",
+  "commit:6e7b593992f8#0",
+  "commit:5dd3db86157c#0",
+  "commit:5600776e309b#0",
+  "commit:1ac7cd56fe4b#0"
+ ],
+ "case": {
+  "id": "rails-be797750",
+  "revert": "e3d8331c5b543ea7ea2024d05bd79526d11341c0",
+  "deletion": "be797750e6ce866ea08307f63bf35304a965c8d4",
+  "deletion_subject": "Remove deprecated form_for with strings or symbols",
+  "cutoff": "2010-11-18T16:46:55-02:00"
+ }
+}

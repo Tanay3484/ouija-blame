@@ -1,0 +1,90 @@
+{
+ "repo": "home-assistant/core",
+ "path": "homeassistant/components/shelly/__init__.py",
+ "line": 174,
+ "line_text": "    if device_entry and entry.entry_id not in device_entry.config_entries:",
+ "ghost": {
+  "name": "Maciej Bieniek",
+  "login": "bieniu",
+  "first_wrote": "2021-03-18T21:26:20+01:00",
+  "commit": "0f5efca76b6cbec9a0237b2229d5e01894e7431b",
+  "commit_url": "https://github.com/home-assistant/core/commit/0f5efca76b6cbec9a0237b2229d5e01894e7431b",
+  "subject": "Fix Shelly sleeping device initialization after reconfiguration (#48076)",
+  "last_seen": "2025-11-25T11:57:45+01:00"
+ },
+ "blame": {
+  "commit": "309c3a8d82537c61f0f51861999287e76ffa1110",
+  "subject": "Fix init for first added shelly device (#48411)",
+  "author": "Michael",
+  "date": "2021-03-30T23:52:02+02:00",
+  "url": "https://github.com/home-assistant/core/commit/309c3a8d82537c61f0f51861999287e76ffa1110"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Fix init for first added shelly device (#48411)",
+   "author": "Michael",
+   "kind": "commit",
+   "url": "https://github.com/home-assistant/core/commit/309c3a8d82537c61f0f51861999287e76ffa1110",
+   "created": "2021-03-30T23:52:02+02:00",
+   "title": "Fix init for first added shelly device (#48411)",
+   "source_id": "commit:309c3a8d8253",
+   "is_ghost": false
+  },
+  {
+   "text": "Fix Shelly sleeping device initialization after reconfiguration (#48076)",
+   "author": "Maciej Bieniek",
+   "kind": "commit",
+   "url": "https://github.com/home-assistant/core/commit/0f5efca76b6cbec9a0237b2229d5e01894e7431b",
+   "created": "2021-03-18T21:26:20+01:00",
+   "title": "Fix Shelly sleeping device initialization after reconfiguration (#48076)",
+   "source_id": "commit:0f5efca76b6c",
+   "is_ghost": true
+  },
+  {
+   "text": "This error was thrown before, when adding the first shelly device:\n```\n2021-03-27 17:58:56 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry shellyplug-s-B4FD74 for shelly\nTraceback (most recent call last):\n  File \"/home/mib85/git/homeassistant-core/homeassistant/config_entries.py\", line 248, in async_setup\n    result = await component.async_setup_entry(hass, self)  # type: ignore\n  File \"/home/mib85/git/homeassistant-core/homeassistant/components/shelly/__init__.py\", line 78, in async_setup_entry\n    if entry.entry_id not in device_entry.config_entries:\nAttributeError: 'NoneType' object has no attribute 'config_entries'\n```",
+   "author": "mib1185",
+   "kind": "pr_comment",
+   "url": "https://github.com/home-assistant/core/pull/48411#issuecomment-808763686",
+   "created": "2021-03-27T17:11:01Z",
+   "title": "PR #48411",
+   "source_id": "pr_comment:808763686",
+   "is_ghost": false
+  }
+ ],
+ "medium": "The initial setup of Shelly devices was problematic, preventing correct configuration and causing errors when adding the first device, alongside issues with device reconfigurations.",
+ "stats": {
+  "commits_walked": 2,
+  "sources": 8,
+  "passages": 35,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:309c3a8d8253#0",
+  "commit:0f5efca76b6c#0",
+  "pr_comment:808763686#0",
+  "pr:48076#1",
+  "pr:48076#0",
+  "review:624733945#1",
+  "pr:48411#0",
+  "review:622736441#0",
+  "pr:48411#4",
+  "pr:48076#5",
+  "pr:48411#6",
+  "pr:48076#7",
+  "pr:48411#11",
+  "pr:48076#12",
+  "pr:48411#3",
+  "pr:48076#4"
+ ],
+ "case": {
+  "id": "core-ea10cdb4",
+  "revert": "f7f7f9a2de6dc53ac629b623a0ce767de5913b62",
+  "deletion": "ea10cdb4b020292532ae893c61638e021224b0de",
+  "deletion_subject": "Remove Shelly redundant device entry check for sleepy devices (#157333)",
+  "cutoff": "2025-11-26T14:54:51+02:00"
+ }
+}

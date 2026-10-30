@@ -1,0 +1,90 @@
+{
+ "repo": "kubernetes/kubernetes",
+ "path": "cmd/kubelet/app/options/options.go",
+ "line": 58,
+ "line_text": "\tRequireKubeConfig bool",
+ "ghost": {
+  "name": "Clayton Coleman",
+  "login": "smarterclayton",
+  "first_wrote": "2015-12-24T18:46:56-05:00",
+  "commit": "791d160b42302a7ae54b2def5f05b4583a63b8fa",
+  "commit_url": "https://github.com/kubernetes/kubernetes/commit/791d160b42302a7ae54b2def5f05b4583a63b8fa",
+  "subject": "Split the Kubelet flag options and struct",
+  "last_seen": "2017-07-26T22:49:14-04:00"
+ },
+ "blame": {
+  "commit": "a66828d73e0f8ca411daf93b6bc7c9ba029956ff",
+  "subject": "Allow a flag that forces kubelet to have a valid kubeconfig",
+  "author": "Clayton Coleman",
+  "date": "2016-08-17T14:18:17-04:00",
+  "url": "https://github.com/kubernetes/kubernetes/commit/a66828d73e0f8ca411daf93b6bc7c9ba029956ff"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Allow a flag that forces kubelet to have a valid kubeconfig",
+   "author": "Clayton Coleman",
+   "kind": "commit",
+   "url": "https://github.com/kubernetes/kubernetes/commit/a66828d73e0f8ca411daf93b6bc7c9ba029956ff",
+   "created": "2016-08-17T14:18:17-04:00",
+   "title": "Allow a flag that forces kubelet to have a valid kubeconfig",
+   "source_id": "commit:a66828d73e0f",
+   "is_ghost": true
+  },
+  {
+   "text": "--require-kubeconfig forces the kubelet to use the kubeconfig for all\nAPIserver communication, and exit cleanly.",
+   "author": "Clayton Coleman",
+   "kind": "commit",
+   "url": "https://github.com/kubernetes/kubernetes/commit/a66828d73e0f8ca411daf93b6bc7c9ba029956ff",
+   "created": "2016-08-17T14:18:17-04:00",
+   "title": "Allow a flag that forces kubelet to have a valid kubeconfig",
+   "source_id": "commit:a66828d73e0f",
+   "is_ghost": true
+  },
+  {
+   "text": "> Controller manager and scheduler already exit if the kube config is invalid",
+   "author": "mikedanese",
+   "kind": "issue_comment",
+   "url": "https://github.com/kubernetes/kubernetes/issues/30515#issuecomment-240484300",
+   "created": "2016-08-17T17:26:02Z",
+   "title": "#30515",
+   "source_id": "issue_comment:240484300",
+   "is_ghost": false
+  }
+ ],
+ "medium": "The passages detail how requiring a kubeconfig prevents Kubelet from exiting with a warning and ensures proper API server communication.",
+ "stats": {
+  "commits_walked": 6,
+  "sources": 147,
+  "passages": 171,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:a66828d73e0f#0",
+  "commit:a66828d73e0f#1",
+  "commit:1162cfd3b10b#0",
+  "commit:1162cfd3b10b#1",
+  "commit:35a3785cf6c1#0",
+  "commit:e2ffd007f779#0",
+  "issue_comment:240484300#1",
+  "pr:30798#0",
+  "issue_comment:240478013#3",
+  "review_comment:47860811#2",
+  "issue_comment:240482622#0",
+  "review_comment:75193791#0",
+  "review_comment:49544888#0",
+  "pr:30798#3",
+  "issue_comment:240508923#0",
+  "issue_comment:240478013#1"
+ ],
+ "case": {
+  "id": "kubernetes-c18626de",
+  "revert": "3bba914496ce614f81622a7805a052d57bcdd41c",
+  "deletion": "c18626de4af37254d4a9c76bd9afae2425125a9a",
+  "deletion_subject": "Remove deprecated and experimental fields from KubeletConfiguration",
+  "cutoff": "2017-08-30T11:54:21-07:00"
+ }
+}

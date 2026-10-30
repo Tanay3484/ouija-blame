@@ -1,0 +1,90 @@
+{
+ "repo": "rails/rails",
+ "path": "railties/lib/rails/commands/server/server_command.rb",
+ "line": 101,
+ "line_text": "      argument :using, optional: true",
+ "ghost": {
+  "name": "Genadi Samokovarov",
+  "login": "gsamokovarov",
+  "first_wrote": "2018-02-19T20:31:56+02:00",
+  "commit": "5af643d8d6f8af19a85a34475f40ac18db7c71e9",
+  "commit_url": "https://github.com/rails/rails/commit/5af643d8d6f8af19a85a34475f40ac18db7c71e9",
+  "subject": "Introduce explicit rails server handler option",
+  "last_seen": "2018-12-26T21:10:37+02:00"
+ },
+ "blame": {
+  "commit": "5af643d8d6f8af19a85a34475f40ac18db7c71e9",
+  "subject": "Introduce explicit rails server handler option",
+  "author": "Genadi Samokovarov",
+  "date": "2018-02-19T20:31:56+02:00",
+  "url": "https://github.com/rails/rails/commit/5af643d8d6f8af19a85a34475f40ac18db7c71e9"
+ },
+ "silent": false,
+ "silence": null,
+ "quotes": [
+  {
+   "text": "Introduce explicit rails server handler option",
+   "author": "Genadi Samokovarov",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/5af643d8d6f8af19a85a34475f40ac18db7c71e9",
+   "created": "2018-02-19T20:31:56+02:00",
+   "title": "Introduce explicit rails server handler option",
+   "source_id": "commit:5af643d8d6f8",
+   "is_ghost": true
+  },
+  {
+   "text": "I mistype `rails server production` instead of `rails server -e\nproduction` expecting to lunch a server in the production environment\nall the time. However, the signature of `rails server --help` is:",
+   "author": "Genadi Samokovarov",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/5af643d8d6f8af19a85a34475f40ac18db7c71e9",
+   "created": "2018-02-19T20:31:56+02:00",
+   "title": "Introduce explicit rails server handler option",
+   "source_id": "commit:5af643d8d6f8",
+   "is_ghost": true
+  },
+  {
+   "text": "In any case, this PR introduces an explicit option for the Rack servers\nconfiguration. The option is called `--using` (or `-u` for short) to\navoid the `rails server --server` tantrum.",
+   "author": "Genadi Samokovarov",
+   "kind": "commit",
+   "url": "https://github.com/rails/rails/commit/5af643d8d6f8af19a85a34475f40ac18db7c71e9",
+   "created": "2018-02-19T20:31:56+02:00",
+   "title": "Introduce explicit rails server handler option",
+   "source_id": "commit:5af643d8d6f8",
+   "is_ghost": true
+  }
+ ],
+ "medium": "The passages detail a shift from interpreting positional arguments like 'production' as Rack server handlers to using an explicit `--using` option.",
+ "stats": {
+  "commits_walked": 1,
+  "sources": 66,
+  "passages": 122,
+  "shown_to_model": 16,
+  "dropped_by_checker": 0,
+  "model_error": null
+ },
+ "shown_ids": [
+  "commit:5af643d8d6f8#0",
+  "commit:5af643d8d6f8#1",
+  "commit:5af643d8d6f8#2",
+  "commit:5af643d8d6f8#3",
+  "commit:5af643d8d6f8#4",
+  "commit:5af643d8d6f8#5",
+  "pr_comment:368310632#0",
+  "review_comment:170834188#0",
+  "review:99112649#0",
+  "pr:32058#2",
+  "pr_comment:366798196#0",
+  "review_comment:170732817#0",
+  "review_comment:172026350#0",
+  "review:99463802#2",
+  "review_comment:171902811#0",
+  "review_comment:170732817#1"
+ ],
+ "case": {
+  "id": "rails-fa791fb8",
+  "revert": "eb63faaa1af7ef28ae1a716d068acc447e28c174",
+  "deletion": "fa791fb8e2a718b5d0430c7ca5a454678dfc192d",
+  "deletion_subject": "Remove deprecated `server` argument from the rails server command",
+  "cutoff": "2019-01-17T16:08:35-05:00"
+ }
+}
