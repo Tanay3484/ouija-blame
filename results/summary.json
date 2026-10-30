@@ -1,0 +1,348 @@
+{
+ "cases": 45,
+ "methods": {
+  "b1": {
+   "name": "git blame message",
+   "reason_match": 7,
+   "explains": 19,
+   "median_words": 12,
+   "mean_words": 41.2,
+   "errors": 0
+  },
+  "b2": {
+   "name": "blame + its PR",
+   "reason_match": 7,
+   "explains": 29,
+   "median_words": 268,
+   "mean_words": 1381.3,
+   "errors": 0
+  },
+  "b3": {
+   "name": "git log -S, 5 oldest",
+   "reason_match": 5,
+   "explains": 15,
+   "median_words": 41,
+   "mean_words": 81.3,
+   "errors": 0
+  },
+  "seance": {
+   "name": "séance",
+   "reason_match": 8,
+   "explains": 28,
+   "median_words": 67,
+   "mean_words": 73.2,
+   "errors": 0
+  }
+ },
+ "blame_is_origin": 28,
+ "log_s_has_origin": 29,
+ "walk_cases": 45,
+ "median_walk_length": 1,
+ "answerable": 32,
+ "seance_silent": 1,
+ "silent_when_unanswerable": 1,
+ "silent_when_answerable": 0,
+ "spoke_without_reason": 16,
+ "seance_minus_b1_R": {
+  "diff": 0.022,
+  "lo": -0.044,
+  "hi": 0.089
+ },
+ "seance_minus_b2_R": {
+  "diff": 0.022,
+  "lo": -0.044,
+  "hi": 0.089
+ },
+ "seance_minus_b3_R": {
+  "diff": 0.067,
+  "lo": -0.022,
+  "hi": 0.178
+ },
+ "seance_minus_b1_RE": {
+  "diff": 0.2,
+  "lo": 0.089,
+  "hi": 0.333
+ },
+ "seance_minus_b2_RE": {
+  "diff": -0.022,
+  "lo": -0.111,
+  "hi": 0.044
+ },
+ "seance_minus_b3_RE": {
+  "diff": 0.289,
+  "lo": 0.133,
+  "hi": 0.444
+ },
+ "per_case": {
+  "ansible-07acc579": {
+   "b2": "E",
+   "b3": "E",
+   "b1": "E",
+   "seance": "E"
+  },
+  "ansible-23a22397": {
+   "seance": "R",
+   "b3": "N",
+   "b2": "R",
+   "b1": "R"
+  },
+  "ansible-b47d2e07": {
+   "b1": "N",
+   "seance": "N",
+   "b3": "N",
+   "b2": "E"
+  },
+  "core-19f48e18": {
+   "b1": "N",
+   "b2": "E",
+   "seance": "R",
+   "b3": "N"
+  },
+  "core-39cb2237": {
+   "b1": "N",
+   "b2": "N",
+   "b3": "N",
+   "seance": "N"
+  },
+  "core-40cb9337": {
+   "b2": "E",
+   "b3": "N",
+   "seance": "N",
+   "b1": "N"
+  },
+  "core-5712d12c": {
+   "b1": "N",
+   "b3": "N",
+   "b2": "E",
+   "seance": "E"
+  },
+  "core-5b25c245": {
+   "b1": "N",
+   "b3": "N",
+   "seance": "E",
+   "b2": "E"
+  },
+  "core-7ae8bd51": {
+   "b3": "N",
+   "b2": "N",
+   "b1": "N",
+   "seance": "N"
+  },
+  "core-84d6f5ed": {
+   "seance": "E",
+   "b2": "E",
+   "b1": "N",
+   "b3": "N"
+  },
+  "core-a6c1ce86": {
+   "b1": "N",
+   "b3": "N",
+   "b2": "N",
+   "seance": "N"
+  },
+  "core-ce022613": {
+   "seance": "N",
+   "b1": "N",
+   "b2": "N",
+   "b3": "N"
+  },
+  "core-ea10cdb4": {
+   "b1": "E",
+   "b2": "E",
+   "seance": "R",
+   "b3": "R"
+  },
+  "istio-f5640ca8": {
+   "b3": "N",
+   "seance": "N",
+   "b1": "N",
+   "b2": "N"
+  },
+  "kubernetes-10a12ddb": {
+   "b1": "N",
+   "b2": "N",
+   "b3": "N",
+   "seance": "N"
+  },
+  "kubernetes-128e189f": {
+   "b2": "E",
+   "b1": "E",
+   "seance": "E",
+   "b3": "E"
+  },
+  "kubernetes-25e713ba": {
+   "seance": "N",
+   "b2": "N",
+   "b1": "N",
+   "b3": "E"
+  },
+  "kubernetes-2e19dea9": {
+   "b2": "R",
+   "b3": "R",
+   "b1": "R",
+   "seance": "R"
+  },
+  "kubernetes-3831dd03": {
+   "b3": "R",
+   "b2": "R",
+   "seance": "R",
+   "b1": "R"
+  },
+  "kubernetes-40e5e688": {
+   "seance": "E",
+   "b2": "E",
+   "b1": "N",
+   "b3": "N"
+  },
+  "kubernetes-587eb199": {
+   "seance": "E",
+   "b2": "E",
+   "b3": "E",
+   "b1": "E"
+  },
+  "kubernetes-86d94937": {
+   "b2": "N",
+   "seance": "N",
+   "b1": "N",
+   "b3": "N"
+  },
+  "kubernetes-916cf16c": {
+   "b3": "E",
+   "seance": "E",
+   "b1": "E",
+   "b2": "E"
+  },
+  "kubernetes-9bbf01ba": {
+   "seance": "E",
+   "b1": "N",
+   "b3": "N",
+   "b2": "N"
+  },
+  "kubernetes-c18626de": {
+   "seance": "E",
+   "b1": "E",
+   "b3": "E",
+   "b2": "E"
+  },
+  "kubernetes-e25a5b15": {
+   "b3": "N",
+   "seance": "E",
+   "b2": "E",
+   "b1": "N"
+  },
+  "kubernetes-f1af8462": {
+   "seance": "E",
+   "b3": "N",
+   "b2": "E",
+   "b1": "N"
+  },
+  "kubernetes-f984b4c7": {
+   "seance": "E",
+   "b1": "E",
+   "b3": "N",
+   "b2": "E"
+  },
+  "kubernetes-fe8578db": {
+   "b1": "E",
+   "b3": "N",
+   "seance": "E",
+   "b2": "E"
+  },
+  "rails-0f9249c9": {
+   "b2": "N",
+   "b1": "N",
+   "seance": "N",
+   "b3": "N"
+  },
+  "rails-24367edb": {
+   "seance": "N",
+   "b1": "N",
+   "b2": "N",
+   "b3": "N"
+  },
+  "rails-29679df0": {
+   "b1": "R",
+   "b2": "R",
+   "seance": "E",
+   "b3": "R"
+  },
+  "rails-376ffe0e": {
+   "b3": "E",
+   "seance": "N",
+   "b1": "N",
+   "b2": "N"
+  },
+  "rails-3803fcce": {
+   "b2": "N",
+   "b3": "N",
+   "b1": "N",
+   "seance": "N"
+  },
+  "rails-51665ffa": {
+   "seance": "E",
+   "b3": "E",
+   "b2": "E",
+   "b1": "E"
+  },
+  "rails-683fc4db": {
+   "b3": "E",
+   "b1": "E",
+   "seance": "E",
+   "b2": "E"
+  },
+  "rails-6d1252cf": {
+   "b3": "N",
+   "b1": "N",
+   "seance": "E",
+   "b2": "E"
+  },
+  "rails-a38732c8": {
+   "b3": "N",
+   "b2": "N",
+   "seance": "N",
+   "b1": "N"
+  },
+  "rails-b1b2c6d5": {
+   "b1": "R",
+   "b2": "R",
+   "seance": "R",
+   "b3": "R"
+  },
+  "rails-be797750": {
+   "seance": "N",
+   "b3": "N",
+   "b1": "N",
+   "b2": "N"
+  },
+  "rails-d697ee14": {
+   "b1": "R",
+   "b3": "N",
+   "seance": "R",
+   "b2": "R"
+  },
+  "rails-dd7a6737": {
+   "b1": "E",
+   "b2": "E",
+   "seance": "E",
+   "b3": "N"
+  },
+  "rails-e428c75d": {
+   "b2": "R",
+   "b3": "N",
+   "b1": "R",
+   "seance": "R"
+  },
+  "rails-f6db31ec": {
+   "b2": "N",
+   "b1": "N",
+   "b3": "N",
+   "seance": "N"
+  },
+  "rails-fa791fb8": {
+   "b3": "E",
+   "b2": "E",
+   "seance": "E",
+   "b1": "E"
+  }
+ }
+}
