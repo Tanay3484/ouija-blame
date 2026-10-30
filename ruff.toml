@@ -1,0 +1,7 @@
+# One lint config for backend/ and scripts/, so CI and local runs agree.
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]  # the formatter wraps code; long docstring lines are fine
