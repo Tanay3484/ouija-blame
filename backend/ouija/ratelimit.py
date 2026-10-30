@@ -50,6 +50,9 @@ def client_of(request: Request) -> str:
 def limit(limiter: RateLimiter):
     def dependency(request: Request) -> None:
         if not limiter.check(client_of(request)):
-            raise HTTPException(429, "Too many requests. The spirits are tired. Try again in a minute, or open a séance from the gallery.")
+            raise HTTPException(
+                429,
+                "Too many requests. The spirits are tired. Try again in a minute, or open a séance from the gallery.",
+            )
 
     return dependency

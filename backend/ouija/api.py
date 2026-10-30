@@ -81,7 +81,12 @@ def create_app(settings: Settings | None = None, llm: ChatJSON | None = None) ->
     walks = _Walks()
     limiter = RateLimiter(s.rate_per_minute)
     app = FastAPI(title="Ouija Blame", docs_url=None, redoc_url=None)
-    app.add_middleware(CORSMiddleware, allow_origins=s.cors_origins.split(","), allow_methods=["*"], allow_headers=["*"])
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=s.cors_origins.split(","),
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     @app.get("/api/health")
     def health() -> dict:
@@ -96,7 +101,14 @@ def create_app(settings: Settings | None = None, llm: ChatJSON | None = None) ->
     def walk(body: WalkIn) -> dict:
         try:
             repo_dir = clones.ensure(
-                s.clone_dir, body.owner, body.repo, body.ref, body.size_kb, s.clone_cap_kb, s.clone_keep, s.git_timeout_s
+                s.clone_dir,
+                body.owner,
+                body.repo,
+                body.ref,
+                body.size_kb,
+                s.clone_cap_kb,
+                s.clone_keep,
+                s.git_timeout_s,
             )
             sha = clones.resolve(repo_dir, body.ref)
             line_text = gitwalk.line_at(repo_dir, sha, body.path, body.line)
@@ -125,7 +137,10 @@ def create_app(settings: Settings | None = None, llm: ChatJSON | None = None) ->
         return {
             "walk_id": wid,
             "line_text": line_text,
-            "commits": [{"sha": c.sha, "author": c.author, "date": c.authored, "subject": c.subject} for c in commits],
+            "commits": [
+                {"sha": c.sha, "author": c.author, "date": c.authored, "subject": c.subject}
+                for c in commits
+            ],
             "need": seance.plan(commits, {}, body.owner, body.repo),
         }
 

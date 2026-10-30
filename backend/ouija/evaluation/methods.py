@@ -45,7 +45,12 @@ def b3_log_s(repo_dir: str, case: dict) -> dict:
     needle = gitwalk.main_identifier(case["line_text"]) or case["line_text"].strip()
     commits = gitwalk.log_s(repo_dir, case["parent"], case["path"], needle)
     text = "\n\n".join(c.message for c in commits)
-    return {"evidence": text, "words": _words(text), "commits": [c.sha for c in commits], "needle": needle}
+    return {
+        "evidence": text,
+        "words": _words(text),
+        "commits": [c.sha for c in commits],
+        "needle": needle,
+    }
 
 
 def seance_method(repo_dir: str, case: dict, github, llm, commits=None) -> dict:

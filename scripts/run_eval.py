@@ -49,7 +49,11 @@ def main(args: list[str]) -> None:
     s = get_settings()
     gh = CachedGitHub(str(ROOT / "data" / "cache" / "github"), offline=offline)
     llm = OllamaClient(
-        s.ollama_base, s.model, timeout_s=s.llm_timeout_s, num_predict=s.llm_num_predict, num_ctx=s.llm_num_ctx
+        s.ollama_base,
+        s.model,
+        timeout_s=s.llm_timeout_s,
+        num_predict=s.llm_num_predict,
+        num_ctx=s.llm_num_ctx,
     )
     cases = load_jsonl(ROOT / "results" / "cases.jsonl")
     key = ROOT / "results" / "answer_key.json"
@@ -80,15 +84,28 @@ def main(args: list[str]) -> None:
                 else:
                     r = methods.seance_method(repo_dir, c, gh, llm)
                     out = r.pop("seance")
-                    out["case"] = {k: c[k] for k in ("id", "revert", "deletion", "deletion_subject", "cutoff")}
+                    out["case"] = {
+                        k: c[k] for k in ("id", "revert", "deletion", "deletion_subject", "cutoff")
+                    }
                     (ROOT / "results" / "seances" / f"{c['id']}.json").write_text(
                         json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8"
                     )
                 err = None
             except (gitwalk.GitError, ValueError) as e:
                 r, err = {"evidence": "", "words": 0, "commits": []}, str(e)[:300]
-            rows.append({"case": c["id"], "method": m, "seconds": round(time.time() - t, 1), "error": err, **r})
-            print(f"[{m}] {i}/{len(cases)} {c['id']} {rows[-1]['seconds']}s {'ERR ' + err if err else ''}", flush=True)
+            rows.append(
+                {
+                    "case": c["id"],
+                    "method": m,
+                    "seconds": round(time.time() - t, 1),
+                    "error": err,
+                    **r,
+                }
+            )
+            print(
+                f"[{m}] {i}/{len(cases)} {c['id']} {rows[-1]['seconds']}s {'ERR ' + err if err else ''}",
+                flush=True,
+            )
         (runs_dir / f"{m}.jsonl").write_text(
             "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
         )
@@ -112,7 +129,9 @@ def write_blind() -> None:
         gid = f"g{n:03d}"
         blind.append({"gid": gid, "case": case, "evidence": ev})
         key[gid] = m
-    blind.sort(key=lambda x: (x["case"], x["gid"]))  # grade case by case; order within a case is random
+    blind.sort(
+        key=lambda x: (x["case"], x["gid"])
+    )  # grade case by case; order within a case is random
     (gdir / "blind.jsonl").write_text(
         "".join(json.dumps(b, ensure_ascii=False) + "\n" for b in blind), encoding="utf-8"
     )

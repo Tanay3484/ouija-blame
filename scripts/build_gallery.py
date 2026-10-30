@@ -17,7 +17,10 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> None:
     cases = {
         c["id"]: c
-        for c in (json.loads(ln) for ln in (ROOT / "results" / "cases.jsonl").read_text(encoding="utf-8").splitlines())
+        for c in (
+            json.loads(ln)
+            for ln in (ROOT / "results" / "cases.jsonl").read_text(encoding="utf-8").splitlines()
+        )
     }
     key = json.loads((ROOT / "results" / "answer_key.json").read_text(encoding="utf-8"))
     out_dir = ROOT / "app" / "public" / "gallery"
@@ -51,7 +54,9 @@ def main() -> None:
         )
     order = {"kubernetes/kubernetes": 0, "rails/rails": 1, "home-assistant/core": 2}
     index.sort(key=lambda x: (x["silent"], order.get(x["repo"], 3), x["id"]))
-    (out_dir / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding="utf-8")
+    (out_dir / "index.json").write_text(
+        json.dumps(index, ensure_ascii=False, indent=1), encoding="utf-8"
+    )
     print(f"{len(index)} séances in the gallery ({sum(not x['silent'] for x in index)} speak)")
 
 

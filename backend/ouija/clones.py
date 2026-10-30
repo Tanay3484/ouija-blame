@@ -27,8 +27,21 @@ def _lock(key: str) -> threading.Lock:
         return _locks.setdefault(key, threading.Lock())
 
 
-def ensure(root: str, owner: str, repo: str, ref: str, size_kb: int | None, cap_kb: int, keep: int, timeout: float) -> str:
-    if not (_NAME.match(owner) and _NAME.match(repo)) or owner.startswith(".") or repo.startswith("."):
+def ensure(
+    root: str,
+    owner: str,
+    repo: str,
+    ref: str,
+    size_kb: int | None,
+    cap_kb: int,
+    keep: int,
+    timeout: float,
+) -> str:
+    if (
+        not (_NAME.match(owner) and _NAME.match(repo))
+        or owner.startswith(".")
+        or repo.startswith(".")
+    ):
         raise CloneRefused("That does not look like a GitHub owner and repo.")
     if size_kb is None or size_kb > cap_kb:
         raise CloneRefused(
@@ -43,7 +56,15 @@ def ensure(root: str, owner: str, repo: str, ref: str, size_kb: int | None, cap_
             _evict(base, keep)
             tmp = path.with_suffix(".tmp")
             shutil.rmtree(tmp, ignore_errors=True)
-            git(str(base), "clone", "--bare", "--quiet", f"https://github.com/{owner}/{repo}.git", str(tmp), timeout=timeout)
+            git(
+                str(base),
+                "clone",
+                "--bare",
+                "--quiet",
+                f"https://github.com/{owner}/{repo}.git",
+                str(tmp),
+                timeout=timeout,
+            )
             tmp.rename(path)
         path.touch()
         try:
