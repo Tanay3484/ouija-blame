@@ -100,16 +100,23 @@ results pending at the time of writing.
   sessions; read transcripts for work content before anything goes public); no unlock game (no time).
 - 2026-10-30/31 (overnight, Tanay busy with work all week): built through with Tanay's agreement, specs
   in one file (`specs/001-ouija-blame-mvp/spec.md`). Live at <https://ouija-blame.onrender.com> from the
-  `build` branch: web `srv-dbie6h5g1s2s73ejeje0` (starter), `ouija-ollama` `srv-dbie6de7bikc73am2nkg`
-  (2c-4g, Gemma 3 4B). After Tanay merges the PR, switch both services to `main`. Evaluation: 45 reverted
+  `main` (PR #1 merged 2026-10-31; both services switched from `build`): web `srv-dbie6h5g1s2s73ejeje0`
+  (starter), `ouija-ollama` `srv-dbie6de7bikc73am2nkg` (2c-4g, Gemma 3 4B). Repo public since 2026-10-31,
+  `main` protected like Week 3 (PR, 1 approval, strict `tests` check, conversations resolved, no force
+  pushes or deletions, admins exempt). All changes now go through a PR. Evaluation: 45 reverted
   deletions (Rails, Kubernetes, Home Assistant, Ansible, Istio), blind-graded by Claude; séance 28/45 any
   written reason vs blame 19/45, blame+PR 29/45; revert's reason 8/45 for séance, 5–7 for baselines;
   main failure: Gemma rarely stays silent (1 of 13 unanswerable). Numbers in `results/summary.md`. Post
   draft `drafts/devto-submission.md` with TODO(Tanay) markers; spot check in `drafts/spot_check.md`
   (`python -I scripts/spot_check.py score`). GitHub calls in scripts go through `gh api` (the classifier
   blocks reading the token). Render health paths need `MSYS_NO_PATHCONV=1` in Git Bash (bit again).
-- **Next (Tanay, morning of 2026-10-31):** rewrite the opening, spot-check 10 cases, try one live séance
-  and write the Spirit section, merge the PR, make the repo public, publish before 12:29 IST.
+- 2026-10-31 morning: answer card (explain.py), two-column layout and interactive Ouija board added
+  after Tanay's first test; 37 tests. **Submitted 2026-10-31 before 12:29 IST:**
+  <https://dev.to/tanay_singh_1005/i-cant-ask-my-old-team-lead-why-anymore-so-i-built-a-seance-3ih2>
+  (the post still says "31 tests"). Spot check skipped (post says no second grader). DevRelay sessions
+  1323 and 1324 were saved as private drafts and not embedded; 1323 is mislabelled Gemini CLI.
+- **Next:** suspend `ouija-blame` and `ouija-ollama` on Render once the winners are out (week of
+  2026-11-02), and Week 3's services once its results are out.
 - Good `@human` candidates (pure functions, 1–3 h each): the revert miner (find reverts and pair them with
   the deleted lines), the blame-to-PR linker (line → commit → PR → review threads), the citation checker
   (does every quoted span exist verbatim in the cited source?), the evaluation statistics (hit rates and a
