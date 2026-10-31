@@ -110,8 +110,13 @@ results pending at the time of writing.
   draft `drafts/devto-submission.md` with TODO(Tanay) markers; spot check in `drafts/spot_check.md`
   (`python -I scripts/spot_check.py score`). GitHub calls in scripts go through `gh api` (the classifier
   blocks reading the token). Render health paths need `MSYS_NO_PATHCONV=1` in Git Bash (bit again).
-- **Next (Tanay, morning of 2026-10-31):** rewrite the opening, spot-check 10 cases, try one live séance
-  and write the Spirit section, merge the PR, make the repo public, publish before 12:29 IST.
+- 2026-10-31 morning: answer card (explain.py), two-column layout and interactive Ouija board added
+  after Tanay's first test; 37 tests. **Submitted 2026-10-31 before 12:29 IST:**
+  <https://dev.to/tanay_singh_1005/i-cant-ask-my-old-team-lead-why-anymore-so-i-built-a-seance-3ih2>
+  (the post still says "31 tests"). Spot check skipped (post says no second grader). DevRelay sessions
+  1323 and 1324 were saved as private drafts and not embedded; 1323 is mislabelled Gemini CLI.
+- **Next:** suspend `ouija-blame` and `ouija-ollama` on Render once the winners are out (week of
+  2026-11-02), and Week 3's services once its results are out.
 - Good `@human` candidates (pure functions, 1–3 h each): the revert miner (find reverts and pair them with
   the deleted lines), the blame-to-PR linker (line → commit → PR → review threads), the citation checker
   (does every quoted span exist verbatim in the cited source?), the evaluation statistics (hit rates and a
